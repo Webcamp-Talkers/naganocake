@@ -22,8 +22,10 @@ Rails.application.routes.draw do
     get 'hostuser_homes/top'
     resources :hostusers, only: [:index, :show, :edit, :update]
     resources :itmes, only: [:index, :new, :create, :edit, :update, :show]
+    
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]
+    
     resources :order_items, only: [:update]
   end
   
