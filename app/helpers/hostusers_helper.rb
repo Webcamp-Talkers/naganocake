@@ -1,0 +1,2 @@
+module HostusersHelper
+end
