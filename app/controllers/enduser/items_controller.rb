@@ -1,4 +1,4 @@
-class Enduser::ItemsController < ApplicationController
+class Enduser::ItemsController < Enduser::Base
   def index
   end
 

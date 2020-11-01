@@ -1,4 +1,4 @@
-class Hostuser::ItemsController < ApplicationController
+class Hostuser::ItemsController < Hostuser::Base
   def index
   end
 

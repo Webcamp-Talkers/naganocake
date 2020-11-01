@@ -1,4 +1,4 @@
-class Enduser::CratItemsController < ApplicationController
+class Enduser::CratItemsController < Enduser::Base
   def index
   end
 

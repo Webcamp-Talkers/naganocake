@@ -1,4 +1,4 @@
-class Hostuser::OrderItemsController < ApplicationController
+class Hostuser::OrderItemsController < Hostuser::Base
 
   def update
   end

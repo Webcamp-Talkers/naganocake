@@ -1,4 +1,4 @@
-class HostuserGenresController < ApplicationController
+class HostuserGenresController < Hostuser::Base
   def index
   end
 
