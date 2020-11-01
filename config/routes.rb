@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :endusers
   scope module: :enduser do
     resources :endusers, only: [:show, :edit, :update]
     get 'enduders/leaving'
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
   namespace :endusers do
+    devise_for :endusers
     root to: 'homes#top'
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
@@ -18,12 +18,12 @@ Rails.application.routes.draw do
     delete 'cart_items/all_destroy'
   end
 
-  devise_for :hostusers
   scope module: :hostuser do
     get 'hostuser_homes/top'
     resources :hostusers, only: [:index, :show, :edit, :update]
   end
   namespace :hostusers do
+  devise_for :hostusers
     resources :itmes, only: [:index, :new, :create, :edit, :update, :show]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]

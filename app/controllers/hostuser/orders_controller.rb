@@ -1,4 +1,4 @@
-class Hostuser::OrdersController < ApplicationController
+class Hostuser::OrdersController < Hostuser::Base
   def index
   end
 
