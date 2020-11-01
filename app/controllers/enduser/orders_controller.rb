@@ -1,4 +1,4 @@
-class Enduser::OrdersController < ApplicationController
+class Enduser::OrdersController < Enduser::Base
   def new
   end
 

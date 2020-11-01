@@ -1,4 +1,4 @@
-class Hostuser::HostuserHomesController < ApplicationController
+class Hostuser::HostuserHomesController < Hostuser::Base
   def top
   end
 end

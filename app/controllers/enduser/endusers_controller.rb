@@ -1,4 +1,4 @@
-class Enduser::EndusersController < ApplicationController
+class Enduser::EndusersController < Enduser::Base
   def show
   end
 

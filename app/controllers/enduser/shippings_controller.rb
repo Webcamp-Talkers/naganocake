@@ -1,4 +1,4 @@
-class Enduser::ShippingsController < ApplicationController
+class Enduser::ShippingsController < Enduser::Base
   def index
   end
 
