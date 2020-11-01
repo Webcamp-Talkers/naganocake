@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     get 'enduders/leaving'
     patch 'endusers/leaving_out'
     get 'homes/about'
+    root to: 'homes#top'
   end
   namespace :endusers do
     devise_for :endusers
-    root to: 'homes#top'
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :orders, only: [:new, :create, :index, :show]
