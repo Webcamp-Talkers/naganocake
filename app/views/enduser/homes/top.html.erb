@@ -1,44 +1,41 @@
 <div class="row">
   <div class="col-lg-2">
-    <div class="border" style="padding:10px;">
+    <div class="serch-box">
       <h3 class="text-center">ジャンル検索</h1>
       <!--ここはジャンルと商品一覧ができたときに差し替え-->
       <ul>
-        <li class="text-left">ケーキ</li>
-        <li class="text-left">焼き菓子</li>
-        <li class="text-left">プリン</li>
-        <li class="text-left">キャンディ</li>
+        <li class="genle text-left">ケーキ</li>
+        <li class="genle text-left">焼き菓子</li>
+        <li class="genle text-left">プリン</li>
+        <li class="genle text-left">キャンディ</li>
       </ul>
       <!--ここまで-->
     </div>
   </div>
-  <div class="col-lg-9">
+  <div class="col-lg-9 main">
     <div class="row">
       <div class="col-lg-2"></div>
-      <div class="col-lg-6">
-        <div>
+      <div class="col-lg-6 main-text">
           <p class="mx-5">ようこそ、NagnoCakeへ！<br>
              このサイトは、ケーキ販売のECサイトになります。<br>
              会員でない方も商品の閲覧はできますが、<br>
              購入には会員登録が必要になります。
           </p>
-        </div>
       </div>
       <div class="col-lg-4"></div>
     </div>
     <div class="row">
-      <h2 class="text-left">オススメ商品</h1>
+      <h2 class="text-left items-title">オススメ商品</h1>
       <!--ここは商品ができたときに差し替え-->
       <% (1..4).each do |i| %>
-        <div class="col-lg-3">
-            <div></div>
+        <div class="col-lg-3 item-box">
             <div><%= image_tag 'no_image.jpg', :size =>'180x100' %></div>
-            <div>商品名</div>
-            <div>¥0,000</div>
+            <div class="item-name-price">商品名</div>
+            <div class="item-name-price">¥0,000</div>
         </div>
       <% end %>
       <!--ここまで-->
     </div>
-    <div class="row text-right"><%= link_to "もっと見る>", endusers_items_path %></div>
+    <div class="row text-right item-link"><%= link_to "もっと見る>", endusers_items_path %></div>
   </div>
 </div>

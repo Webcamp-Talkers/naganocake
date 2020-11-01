@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :hostusers, only: [:index, :show, :edit, :update]
   end
   namespace :hostusers do
-  devise_for :hostusers
+  devise_for :hostusers, :controllers => {
+    :sessions => 'hostusers/sessions'
+   }
     resources :itmes, only: [:index, :new, :create, :edit, :update, :show]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]
