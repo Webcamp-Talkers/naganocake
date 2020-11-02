@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   def after_sign_in_path_for(resource)
-    enduser_items_path
+    case resource
+    when Hostuser
+      hostuser_homes_top_path
+    when Enduser
+      enduser_items_path
+    end
   end
-  
+
   private
 
   def configure_permitted_parameters

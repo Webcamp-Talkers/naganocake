@@ -1,2 +1,24 @@
-<h1>Hostusers#edit</h1>
-<p>Find me in app/views/hostusers/edit.html.erb</p>
+<div class="row">
+  <h2><%= @enduser.name %>さんの会員情報編集</h2>
+  <div class="row">
+    <h4>顧客ID  <%= @enduser.id %> <%= @enduser.status %></h4>
+    <div class="enduser_show">
+      <h4>氏名  <%= @enduser.name %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4>フリガナ</h4>  <%= @enduser. %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4>郵便番号  <%= @enduser.postal_code %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4>住所  <%= @enduser.address %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4>電話番号  <%= @enduser.phone_number %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4>メールアドレス  <%= @enduser.email %></h4>
+    </div>
+  </div>
+</div>
