@@ -1,0 +1,41 @@
+<header>
+
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+         <!-- 管理者がログインしている時 -->
+          <li>
+            <%= link_to "商品一覧", class: "header_btn glyphicon glyphicon-briefcase" %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", class: "header_btn glyphicon glyphicon-user"  %>
+          </li>
+          <li>
+            <%= link_to "注文履歴一覧", class: "header_btn glyphicon glyphicon-list-alt" %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", class: "header_btn glyphicon glyphicon-th-list" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", class: "header_btn glyphicon glyphicon-log-out" %>
+          </li>
+        <!--<#% else %>-->
+
+          <!-- ログインしていない時 -->
+          <li>
+            <%= link_to "商品一覧",hostuser_items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
+          </li>
+          <li>
+            <%= link_to "新規登録", class: "header_btn glyphicon glyphicon-edit" %>
+          </li>
+          <li>
+            <%= link_to "ログイン",new_hostuser_hostuser_session_path, class: "header_btn glyphicon glyphicon-log-in" %>
+          </li>
+          <li>
+            <%= link_to "About",homes_about_path, class: "header_btn glyphicon glyphicon-log-in" %>
+          </li>
+
+
+        <!--<#% end %>-->
+      </ul>
+    </nav>
+</header>
