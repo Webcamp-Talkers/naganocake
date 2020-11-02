@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
   namespace :enduser do
-    devise_for :endusers
+    devise_for :endusers, :controllers => {
+    :sessions => 'endusers/sessions', :registrations => 'endusers/registrations', :passwords => 'endusers/passwords'
+   }
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :orders, only: [:new, :create, :index, :show]
