@@ -1,0 +1,42 @@
+<header>
+
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <!--<#% if enduser_sign_in? %>-->
+
+          <!--エンドユーザーがログインしている時 -->
+          <li class="header-name">
+            <!--ようこそ、<%#= full_name(current_enduser) %>さん！-->
+          </li>
+          <li>
+            <%= link_to "マイページ", class: "header_btn glyphicon glyphicon-home" %>
+          </li>
+          <li>
+            <%= link_to "商品一覧",enduser_items_path ,class: "header_btn glyphicon glyphicon-briefcase" %>
+          </li>
+          <li>
+            <%= link_to "cart",enduser_crat_items_path, class: "header_btn glyphicon glyphicon-shopping-cart" %>
+            カート(<%#= current_endusers.cart_item.count %>個)
+            <!--<#% end %>-->
+          </li>
+          <li>
+            <%= link_to "ログアウト",destroy_enduser_enduser_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
+          </li>
+           <!--ログインしていない時-->
+          <li>
+            <%= link_to "商品一覧",enduser_items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
+          </li>
+          <li>
+            <%= link_to "新規登録",new_enduser_enduser_registration_path, class: "header_btn glyphicon glyphicon-edit" %>
+          </li>
+          <li>
+            <%= link_to "ログイン",new_enduser_enduser_session_path, class: "header_btn glyphicon glyphicon-log-in" %>
+          </li>
+          <li>
+            <%= link_to "About",homes_about_path ,class: "header_btn glyphicon glyphicon-log-in" %>
+          </li>
+
+        <!--<#% end %>-->
+      </ul>
+    </nav>
+</header>
