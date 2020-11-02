@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     root to: 'homes#top'
   end
-  namespace :endusers do
+  namespace :enduser do
     devise_for :endusers
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
@@ -22,11 +22,11 @@ Rails.application.routes.draw do
     get 'hostuser_homes/top'
     resources :hostusers, only: [:index, :show, :edit, :update]
   end
-  namespace :hostusers do
+  namespace :hostuser do
   devise_for :hostusers, :controllers => {
     :sessions => 'hostusers/sessions'
    }
-    resources :itmes, only: [:index, :new, :create, :edit, :update, :show]
+    resources :items, only: [:index, :new, :create, :edit, :update, :show]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     resources :order_items, only: [:update]
