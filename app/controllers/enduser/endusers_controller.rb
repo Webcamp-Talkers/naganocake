@@ -9,10 +9,10 @@ class Enduser::EndusersController < Enduser::Base
 
   def update
     if @enduser.update(enduser_params)
-      redirect_to enduser_parh(@enduser)
+      redirect_to endusers_parh, notice: "更新に成功しました"
     else
       flash.now[:alert] = '入力に不備があります'
-      render 'endusers/edit'
+      render 'enduser/endusers/edit'
     end
   end
 
@@ -20,11 +20,14 @@ class Enduser::EndusersController < Enduser::Base
   end
 
   def leaving_out
+    @enduser.costomer_status = false
+    @enduser.save
+    redirect_to root_path
   end
-
+  
   private
   def enduser_params
-    params.require(:enduser).permit(:name, :first_name, :last_name, :first_furigana, :last_furigana, :phone_number,
+    params.require(:enduser).permit(:email, :first_name, :last_name, :first_furigana, :last_furigana, :phone_number,
     :postal_code, :address, :costomer_status)
   end
   
