@@ -9,6 +9,13 @@ class Hostuser::ItemsController < Hostuser::Base
 
   def create
     @item = Item.new(item_params)
+    # あとでジャンルidをここに必ず入れる
+    if @item.save
+      flash[:notice] = "update successfully"
+      redirect_to hostuser_item_path(@item.id)
+    else
+      render "items/show"
+    end
   end
 
   def show
@@ -25,7 +32,7 @@ class Hostuser::ItemsController < Hostuser::Base
   
    private
   def item_params
-    params.require(:item).permit(:names, :price_before_tax, :image_id, :details)
+    params.require(:item).permit(:name, :price_before_tax, :image, :details, :sales_status)
   end
 
 end
