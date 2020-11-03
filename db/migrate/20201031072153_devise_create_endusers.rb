@@ -39,7 +39,7 @@ class DeviseCreateEndusers < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.string :postal_code
       t.string :address
-      t.boolean :costomer_status, default: true
+      t.boolean :costomer_status, default: true, null: false
       t.timestamps null: false
     end
 
