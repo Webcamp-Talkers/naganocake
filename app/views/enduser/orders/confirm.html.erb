@@ -1,5 +1,55 @@
 <div class="row" style="margin: 0 auto;">
   <h2>注文情報確認</h2>
   </div class="row">
+    <div class="col-xs-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.price_before_tax*tax %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.order_price %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-xs-4">
+      <table class="table table-bordered">
+        <tr>
+          <th>送料</th>
+          <td>800</td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td></td>
+        </tr>
+      </table>
+    </div>
   </div>
-</div
+  <div class="row">
+    <h3>支払い方法</h3>
+    <%= @order.method_pay %>
+  </div>
+  <div class="row">
+    <h3>お届け先</h3>
+    <%= @order.postal_code %><%= @order.address %>
+    <%= @order.name %>
+  </div>
+  <div class="row">
+    <%= link_to "購入を確定する", enduser_orders_thanks_path, class: 'btn btn-success center-block' %>
+  </div>
+</div>
