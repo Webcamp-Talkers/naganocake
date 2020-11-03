@@ -19,8 +19,10 @@ class Enduser::EndusersController < Enduser::Base
   end
 
   def leaving_out
-    @endusers.costomer_status = false
-    @endusers.save
+    # @endusers.costomer_status = false
+    # @endusers.save
+    @endusers.update(costomer_status: false)
+    reset_session
     redirect_to root_path
   end
 

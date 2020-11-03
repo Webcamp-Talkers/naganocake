@@ -1,7 +1,7 @@
 <div class="row">
 <h2>登録情報編集</h2>
 
-<%= form_with (model:@enduser, url: endusers_path, local: true, method: :patch) do |f| %>
+<%= form_with model:@enduser, url: endusers_path, local: true, method: :patch do |f| %>
 
   <div class="field form-group col-xs-12">
     <%= f.label :"名前", class: "col-sm-2 control-label" %>
