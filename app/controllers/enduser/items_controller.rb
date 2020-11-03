@@ -2,6 +2,6 @@ class Enduser::ItemsController < Enduser::Base
   def index
   end
 
-  def show
+  def shows
   end
 end
