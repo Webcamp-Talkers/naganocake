@@ -1,7 +1,7 @@
 <div class="row">
 <h2>登録情報編集</h2>
 
-<%= form_with model:@endusers, local: true do |f| %>
+<%= form_with model:@enduser, url: endusers_path, local: true, method: :patch do |f| %>
 
   <div class="field form-group col-xs-12">
     <%= f.label :"名前", class: "col-sm-2 control-label" %>
@@ -42,7 +42,7 @@
 
   <div class="field form-group col-xs-12">
     <div class="col-sm-2"></div>
-    <%= f.submit "編集を保存する", class:"col-sm-3 btn btn-success center-block" %>
+      <%= f.submit "編集を保存する", class:"col-sm-3 btn btn-success center-block" %>
     <div class="col-sm-3"></div>
     <%= link_to "退会する", endusers_leaving_path, class:"col-sm-2 btn btn-danger center-block" %>
   </div>
