@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   scope module: :enduser do
-    resource :endusers, only: [:show, :edit, :update]
-    get 'endusers/leaving'
+    resources :endusers, only: [:show, :edit, :update]
+    get 'enduders/leaving'
     patch 'endusers/leaving_out'
     get 'homes/about'
     root to: 'homes#top'
