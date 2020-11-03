@@ -1,6 +1,5 @@
 class Enduser::EndusersController < Enduser::Base
   before_action :current_enduser_aaa
-
   def show
   end
 
