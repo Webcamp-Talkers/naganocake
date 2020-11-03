@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
   scope module: :enduser do
-    resources :endusers, only: [:show, :edit, :update]
-    get 'enduders/leaving'
+    resource :endusers, only: [:show, :edit, :update]
+    get 'endusers/leaving'
     patch 'endusers/leaving_out'
     get 'homes/about'
     root to: 'homes#top'
   end
   namespace :enduser do
-    devise_for :endusers,:controllers => {
+    devise_for :endusers, :controllers => {
     :sessions => 'endusers/sessions', :registrations => 'endusers/registrations', :passwords => 'endusers/passwords'
    }
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
