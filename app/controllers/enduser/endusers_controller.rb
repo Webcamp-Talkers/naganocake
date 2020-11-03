@@ -7,7 +7,6 @@ class Enduser::EndusersController < Enduser::Base
   end
 
   def update
-    @endusers = current_enduser_enduser.id
     if @endusers.update(enduser_params)
       redirect_to endusers_path, notice: "更新に成功しました"
     else
