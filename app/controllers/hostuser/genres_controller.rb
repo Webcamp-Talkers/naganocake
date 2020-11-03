@@ -31,7 +31,6 @@ class Hostuser::GenresController < Hostuser::Base
   end
 
   private
-
   def genre_params
     params.require(:genre).permit(:name, :valid_flag)
   end
