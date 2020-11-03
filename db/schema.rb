@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_072153) do
     t.integer "price_before_tax"
     t.string "image_id"
     t.text "details"
-    t.boolean "sales_status", default: true
+    t.integer "sales_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

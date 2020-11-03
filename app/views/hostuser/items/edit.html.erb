@@ -1,2 +1,35 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<div class="row">
+  <h2>商品新規登録</h2>
+   <%= form_with model: @item, url: hostuser_items_path, method: :patch, local: true do |f| %>
+  　<div class="col-xs-4">
+      <div class="field">
+        <%= f.label :Image %><br>
+        <%= f.attachment_field :image, class: "item_image" %>
+      </div>
+ 　  </div>
+    <div class="col-xs-4">
+      <div class="field">
+        <%= f.label :商品名 %><br>
+        <%= f.text_field :name, class: "name" %>
+      </div>
+      <div class="field">
+        <%= f.label :商品説明 %><br>
+        <%= f.text_field :details, class: "details" %>
+      </div>
+      <div class="field">
+        <%= f.label :税抜価格 %><br>
+        <%= f.text_field :price_before_tax, class: "price_before_tax" %>
+      </div>
+      <div class="field">
+        <%= f.label :販売ステータス %><br>
+        <%= f.select :sales_status, Item.sales_statuses .keys, {} ,class: "sales_status" %>
+      </div>
+    </div>  
+    <div class="col-xs-4">
+      <div class="actions">
+        <%= f.submit "変更を保存" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
