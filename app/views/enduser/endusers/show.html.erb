@@ -1,2 +1,47 @@
-<h1>Endusers#show</h1>
-<p>Find me in app/views/endusers/show.html.erb</p>
+<h2>マイページ</h2>
+<div class="row">
+  <div class="col-xs-7">
+    <div class="col-sm-2">登録情報</div>
+    <div class="col-sm-2"><%= link_to "編集する", edit_endusers_path, class:"btn btn-primary" %></div>
+    <div class="col-sm-3"><%= link_to "パスワードを変更する", edit_enduser_enduser_registration_path, class:"btn btn-primary" %></div>
+
+    <table class="table table-bordered">
+    	<thead>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<th>氏名</th>
+    			<td><%= @enduser.first_name %><%= @enduser.last_name %></td>
+    		</tr>
+    		<tr>
+    			<th>カナ</th>
+    			<td><%= @enduser.first_furigana %><%= @enduser.last_furigana %></td>
+    		</tr>
+    		<tr>
+    			<th>郵便番号</th>
+    			<td><%= @enduser.postal_code %></td>
+    		</tr>
+    		<tr>
+    			<th>住所</th>
+    			<td><%= @enduser.address %></td>
+    		</tr>
+    		<tr>
+    			<th>電話番号</th>
+    			<td><%= @enduser.phone_number %></td>
+    		</tr>
+    		<tr>
+    			<th>メールアドレス</th>
+    			<td><%= @enduser.email %></td>
+    		</tr>
+    	</tbody>
+    </table>
+  </div>
+  <div class="col-xs-7">
+      <div class="col-sm-2">配送先</div>
+      <div class="col-sm-2"><%= link_to "一覧を見る", enduser_shippings_path(@enduser), class:"btn btn-primary" %></div>
+  </div>
+  <div class="col-xs-7">
+    <div class="col-sm-2">注文履歴</div>
+    <div class="col-sm-2"><%= link_to "一覧を見る", enduser_order_path(@enduser), class:"btn btn-primary" %></div>
+  </div>
+</div>
