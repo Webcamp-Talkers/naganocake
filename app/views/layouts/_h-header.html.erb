@@ -1,31 +1,33 @@
 <header>
-
+    <nav class="nav navbar-nav navbar-left title">
+      <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
+    </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <% if hostuser_hostuser_signed_in? %>
          <!-- 管理者がログインしている時 -->
-          <li>
-            <%= link_to "商品一覧", class: "header_btn glyphicon glyphicon-briefcase" %>
-          </li>
-          <li>
-            <%= link_to "会員一覧", class: "header_btn glyphicon glyphicon-user"  %>
-          </li>
-          <li>
-            <%= link_to "注文履歴一覧", class: "header_btn glyphicon glyphicon-list-alt" %>
-          </li>
-          <li>
-            <%= link_to "ジャンル一覧", class: "header_btn glyphicon glyphicon-th-list" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", class: "header_btn glyphicon glyphicon-log-out" %>
-          </li>
-        <!--<#% else %>-->
-
-          <!-- ログインしていない時 -->
           <li>
             <%= link_to "商品一覧",hostuser_items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
           </li>
           <li>
-            <%= link_to "新規登録", class: "header_btn glyphicon glyphicon-edit" %>
+            <%= link_to "会員一覧",hostusers_path, class: "header_btn glyphicon glyphicon-user"  %>
+          </li>
+          <li>
+            <%= link_to "注文履歴一覧",hostuser_orders_path, class: "header_btn glyphicon glyphicon-list-alt" %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧",hostuser_genres_path, class: "header_btn glyphicon glyphicon-th-list" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト",destroy_hostuser_hostuser_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
+          </li>
+        <% else %>
+          <!-- ログインしていない時 -->
+          <li>
+            <%= link_to "商品一覧",enduser_items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
+          </li>
+          <li>
+            <%= link_to "新規登録",new_enduser_enduser_registration_path, class: "header_btn glyphicon glyphicon-edit" %>
           </li>
           <li>
             <%= link_to "ログイン",new_hostuser_hostuser_session_path, class: "header_btn glyphicon glyphicon-log-in" %>
@@ -33,9 +35,7 @@
           <li>
             <%= link_to "About",homes_about_path, class: "header_btn glyphicon glyphicon-log-in" %>
           </li>
-
-
-        <!--<#% end %>-->
+        <% end %>
       </ul>
     </nav>
 </header>
