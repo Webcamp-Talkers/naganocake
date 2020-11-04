@@ -6,11 +6,14 @@ class Hostuser::ItemsController < Hostuser::Base
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    # あとでジャンルidをここに必ず入れる
+    @genre = Genre.find(params[:id])
+    @item.genre_id = @genre.id
+    
     if @item.save
       flash[:notice] = "update successfully"
       redirect_to hostuser_item_path(@item.id)
