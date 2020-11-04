@@ -1,7 +1,7 @@
 class Hostuser::ItemsController < Hostuser::Base
   def index
     @items = Item.all
-    @genres = Genre
+    @genres = Genre.all
   end
 
   def new
@@ -30,7 +30,7 @@ class Hostuser::ItemsController < Hostuser::Base
 
   def update
     @item = Item.find(params[:id])
-    
+
     if @item.update(item_params)
       flash[:notice] = "updated successfully."
       redirect_to hostuser_item_path(@item.id)
@@ -38,7 +38,7 @@ class Hostuser::ItemsController < Hostuser::Base
       render "items/edit"
     end
   end
-  
+
    private
   def item_params
     params.require(:item).permit(:name, :price_before_tax, :image, :details, :sales_status)
