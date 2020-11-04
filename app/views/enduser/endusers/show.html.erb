@@ -11,37 +11,37 @@
     	<tbody>
     		<tr>
     			<th>氏名</th>
-    			<td><%= @endusers.first_name %><%= @endusers.last_name %></td>
+    			<td><%= @enduser.first_name %><%= @enduser.last_name %></td>
     		</tr>
     		<tr>
     			<th>カナ</th>
-    			<td><%= @endusers.first_furigana %><%= @endusers.last_furigana %></td>
+    			<td><%= @enduser.first_furigana %><%= @enduser.last_furigana %></td>
     		</tr>
     		<tr>
     			<th>郵便番号</th>
-    			<td><%= @endusers.postal_code %></td>
+    			<td><%= @enduser.postal_code %></td>
     		</tr>
     		<tr>
     			<th>住所</th>
-    			<td><%= @endusers.address %></td>
+    			<td><%= @enduser.address %></td>
     		</tr>
     		<tr>
     			<th>電話番号</th>
-    			<td><%= @endusers.phone_number %></td>
+    			<td><%= @enduser.phone_number %></td>
     		</tr>
     		<tr>
     			<th>メールアドレス</th>
-    			<td><%= @endusers.email %></td>
+    			<td><%= @enduser.email %></td>
     		</tr>
     	</tbody>
     </table>
   </div>
   <div class="col-xs-7">
       <div class="col-sm-2">配送先</div>
-      <div class="col-sm-2"><%= link_to "一覧を見る", enduser_shippings_path(@endusers), class:"btn btn-primary" %></div>
+      <div class="col-sm-2"><%= link_to "一覧を見る", enduser_shippings_path(@enduser), class:"btn btn-primary" %></div>
   </div>
   <div class="col-xs-7">
     <div class="col-sm-2">注文履歴</div>
-    <div class="col-sm-2"><%= link_to "一覧を見る", enduser_order_path(@endusers), class:"btn btn-primary" %></div>
+    <div class="col-sm-2"><%= link_to "一覧を見る", enduser_order_path(@enduser), class:"btn btn-primary" %></div>
   </div>
 </div>
