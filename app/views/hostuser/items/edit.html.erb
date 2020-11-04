@@ -1,33 +1,33 @@
 <div class="row">
-  <h2>商品新規登録</h2>
-   <%= form_with model: @item, url: hostuser_items_path, method: :patch, local: true do |f| %>
+  <h2>商品編集</h2>
+   <%= form_with model: @item, url: hostuser_item_path, method: :patch, local: true do |f| %>
   　<div class="col-xs-4">
       <div class="field">
-        <%= f.label :Image %><br>
+        <%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "no_image.jpg", size: "300x200" %><br>
         <%= f.attachment_field :image, class: "item_image" %>
       </div>
  　  </div>
     <div class="col-xs-4">
       <div class="field">
-        <%= f.label :商品名 %><br>
+        <%= f.label :商品名 %>
         <%= f.text_field :name, class: "name" %>
       </div>
       <div class="field">
-        <%= f.label :商品説明 %><br>
+        <%= f.label :商品説明 %>
         <%= f.text_field :details, class: "details" %>
       </div>
       <div class="field">
-        <%= f.label :税抜価格 %><br>
-        <%= f.text_field :price_before_tax, class: "price_before_tax" %>
+        <%= f.label :税抜価格 %>
+        <%= f.text_field :price_before_tax, class: "price_before_tax" %>円
       </div>
       <div class="field">
-        <%= f.label :販売ステータス %><br>
-        <%= f.select :sales_status, Item.sales_statuses .keys, {} ,class: "sales_status" %>
+        <%= f.label :販売ステータス %>
+        <%= f.select :sales_status, Item.sales_statuses .keys, {} , class: "sales_status btn btn-warning dropdown-toggle" %>
       </div>
     </div>  
     <div class="col-xs-4">
       <div class="actions">
-        <%= f.submit "変更を保存" %>
+        <%= f.submit "変更を保存", class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
