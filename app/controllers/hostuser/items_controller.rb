@@ -1,6 +1,7 @@
 class Hostuser::ItemsController < Hostuser::Base
   def index
     @items = Item.all
+    @genres = Genre
   end
 
   def new
@@ -20,7 +21,7 @@ class Hostuser::ItemsController < Hostuser::Base
 
   def show
     @item = Item.find(params[:id])
-    @price_includ_tax = @item.price_before_tax*1.1.to_s.round(0)
+    @price_includ_tax = (@item.price_before_tax*1.1).floor
   end
 
   def edit

@@ -10,12 +10,12 @@
         <%= @item.name %><br>
       </div>
       <div class="item details">
-         <label>商品説明</label>
+        <label>商品説明</label>
         <%= @item.details %><br>
       </div>
       <div class="item price_before_tax">
-         <label>税込価格(税抜価格)</label>
-        <%= @price_includ_tax %>円<br>
+        <label>税込価格/(税抜価格)</label>
+        <%= @price_includ_tax %>/(<%= @item.price_before_tax %>)円<br>
       </div>
       <div class="item sales_status">
         <label>販売ステータス</label>

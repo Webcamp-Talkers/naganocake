@@ -21,6 +21,10 @@
         <%= f.text_field :price_before_tax, class: "item price_before_tax" %>
       </div>
       <div class="field">
+        <%= f.label :ジャンル %><br>
+        <%= f.select :genre_id, class: "item sales_status" %>
+      </div>
+      <div class="field">
         <%= f.label :販売ステータス %><br>
         <%= f.select :sales_status, Item.sales_statuses .keys, {} ,class: "item sales_status" %>
       </div>
