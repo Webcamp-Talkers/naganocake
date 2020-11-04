@@ -12,8 +12,10 @@ class Enduser::OrdersController < Enduser::Base
   end
 
   def confirm
-    return if @order.vaild?
-      render 'confirm'
+    @enduser = current_enduser_enduser
+    @items = @enduser.order_items
+    return if @order
+      render :new
   end
 
   def thanks

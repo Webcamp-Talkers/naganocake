@@ -1,7 +1,7 @@
 <div class="row" style="margin: 0 auto;">
   <h2>注文情報入力画面</h2>
 
-  <%= form_with model:@order, url: enduser_orders_thanks_path, local: true do |f| %>
+  <%= form_with model:@order, url: enduser_orders_confirm_path, local: true do |f| %>
     <div class="form-group">
       <h3>支払い方法</h3>
       <label><%= f.radio_button :method_pay, :"クレジットカード" %>クレジットカード</label>
@@ -17,7 +17,7 @@
 
       <div class="address-select">
         <h4><%= f.radio_button :order, :"発送済みの住所から選択" %>発送済の住所から選択</h4>
-          <%= f.collection_select(:shipping, @shipping, :id, :full_address) %>
+          <%= f.collection_select(:shipping, @shipping, :id, :address) %>
       </div>
 
       <div class="address-select">
@@ -36,6 +36,6 @@
         </div>
       </div>
     </div>
-    <%= f.submit "確認画面に進む", class: 'btn btn-info center-block' %>
+    <%= f.submit "確認画面に進む", class: 'btn btn-info' %>
   <% end %>
 </div>
