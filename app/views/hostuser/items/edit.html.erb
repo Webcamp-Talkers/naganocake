@@ -1,6 +1,21 @@
 <div class="row">
   <h2>商品編集</h2>
+
    <%= form_with model: @item, url: hostuser_item_path, method: :patch, local: true do |f| %>
+   
+    <!--エラー文-->
+    <% if @item.errors.any? %>
+     <div class=“error_explanation”>
+     <h5 class="text-danger"><%= @item.errors.count %>件のerrorが発生しました。</h5>
+     <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li class="text-danger">●<%= message %></li>
+      <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!--エラー文終わり-->
+    
   　<div class="col-xs-4">
       <div class="field">
         <%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "no_image.jpg", size: "300x200" %><br>
@@ -15,6 +30,10 @@
       <div class="field">
         <%= f.label :商品説明 %>
         <%= f.text_field :details, class: "details" %>
+      </div>
+      <div class="field">
+        <%= f.label :ジャンル %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --",) %>
       </div>
       <div class="field">
         <%= f.label :税抜価格 %>
