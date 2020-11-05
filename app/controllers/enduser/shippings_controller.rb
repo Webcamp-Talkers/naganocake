@@ -7,10 +7,10 @@ class Enduser::ShippingsController < Enduser::Base
   end
 
   def create
+    @shippings = Shipping.all
     @shipping = Shipping.new(shipping_params)
     @shipping.enduser_id = current_enduser_enduser.id
     if @shipping.save
-      redirect_to enduser_shippings_path, notice: "配送先を登録しました"
     else
       flash.now[:alert] = '入力に不備があります'
       render 'enduser/shippings/index'
@@ -30,6 +30,7 @@ class Enduser::ShippingsController < Enduser::Base
   end
 
   def destroy
+    @shippings = Shipping.all
     if @shipping.destroy
       redirect_to enduser_shippings_path, notice: "配送先を登録しました"
     else
