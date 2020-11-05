@@ -1,43 +1,43 @@
 <div class="row">
   <div class="col-xs-2">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>ジャンル検索</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ジャンル名</td>
-        </tr>
-      </tbody>
-    </table>
+    <table class="table table-hover well">
+    <thead>
+      <tr><th>ジャンル検索</th></tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre| %>
+        <% if genre.valid_flag == false %>
+          <tr><td><%= genre.name %></td></tr>
+        <% end %>  
+      <% end %>
+    </tbody>
+  </table>
   </div>
-  
+
   <h2>顧客側の商品詳細</h2>
-    　<div class="col-xs-3">
-    　  <label>商品画像</label>
-  　　　<%= attachment_image_tag @item, :image, :fill, 250, 175, fallback: "no_image.jpg", size: "250x175" %>
-  　　</div>
-      <div class="col-xs-3">
-        <div class="item name">
-          <label>商品名</label>
-          <%= @item.name %><br>
-        </div>
-        <div class="item details">
-          <label>商品説明</label>
-          <%= @item.details %><br>
-        </div>
-        <div class="item price_before_tax">
-          <label>税込価格</label>
-          ¥<%= @price_includ_tax %> (税込)<br>
-        </div>
-      </div>  
-      <div class="col-xs-4">
-        <%= form_with model: @item, url: hostuser_items_path, local: true do |f| %>
-        <%= link_to 'カートに入れる', edit_hostuser_item_path(@item.id), class: "btn btn-primary" %>
-        <% end %>
+  　<div class="col-xs-3">
+  　  <label>商品画像</label>
+　　　<%= attachment_image_tag @item, :image, :fill, 250, 175, fallback: "no_image.jpg", size: "250x175" %>
+　　</div>
+    <div class="col-xs-3">
+      <div class="item name">
+        <label>商品名</label>
+        <%= @item.name %><br>
       </div>
-    
-</div>  
-  
+      <div class="item details">
+        <label>商品説明</label>
+        <%= @item.details %><br>
+      </div>
+      <div class="item price_before_tax">
+        <label>税込価格</label>
+        ¥<%= @price_includ_tax %> (税込)<br>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <%= form_with model: @new_cart_item, url: enduser_crat_items_path, local: true do |f| %>
+        <%= f.select :quantity, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], class: "new_cart_item" %>個
+        <%= link_to 'カートに入れる', edit_hostuser_item_path(@item.id), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+</div>
+

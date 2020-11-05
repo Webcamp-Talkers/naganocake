@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-xs-2">
-  <table class="table table-hover">
+  <table class="table table-hover well">
     <thead>
-      <tr>
-        <th>ジャンル検索</th>
-      </tr>
+      <tr><th>ジャンル検索</th></tr>
     </thead>
     <tbody>
-      <tr>
-        <td>ジャンル名</td>
-      </tr>
+      <% @genres.each do |genre| %>
+        <% if genre.valid_flag == false %>
+          <tr><td><%= genre.name %></td></tr>
+        <% end %>  
+      <% end %>
     </tbody>
   </table>
   </div>
