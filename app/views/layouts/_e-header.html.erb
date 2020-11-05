@@ -1,27 +1,29 @@
 <header>
-
+    <nav class="nav navbar-nav navbar-left title">
+      <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
+    </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <!--<#% if enduser_sign_in? %>-->
-
+        <% if enduser_enduser_signed_in? %>
           <!--エンドユーザーがログインしている時 -->
           <li class="header-name">
-            <!--ようこそ、<%#= full_name(current_enduser) %>さん！-->
+            ようこそ、<%= current_enduser_enduser.first_name %><%= current_enduser_enduser.last_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", class: "header_btn glyphicon glyphicon-home" %>
+            <%= link_to "マイページ",endusers_path, class: "header_btn glyphicon glyphicon-home" %>
           </li>
           <li>
             <%= link_to "商品一覧",enduser_items_path ,class: "header_btn glyphicon glyphicon-briefcase" %>
           </li>
           <li>
             <%= link_to "cart",enduser_crat_items_path, class: "header_btn glyphicon glyphicon-shopping-cart" %>
-            カート(<%#= current_endusers.cart_item.count %>個)
+            カート(<%#= current_enduser_enduser.cart_item.count %>個)
             <!--<#% end %>-->
           </li>
           <li>
             <%= link_to "ログアウト",destroy_enduser_enduser_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
           </li>
+          <% else %>
            <!--ログインしていない時-->
           <li>
             <%= link_to "商品一覧",enduser_items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
@@ -36,7 +38,9 @@
             <%= link_to "About",homes_about_path ,class: "header_btn glyphicon glyphicon-log-in" %>
           </li>
 
-        <!--<#% end %>-->
+        <% end %>
       </ul>
     </nav>
 </header>
+
+
