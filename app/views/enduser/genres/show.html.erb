@@ -17,8 +17,8 @@
   </table>
   </div>
   <div class="col-xs-10">
-    <h2>商品(全XX件)</h2>
-    <% @items.each do |item| %>
+    <h2><%= @genre.name %>一覧(全<%= @genre.items.count%>件)</h2>
+    <% @genre.items.each do |item| %>
       <% if item.sales_status == "販売中" %>
         <div class="col-md-3">
 　　　　　<%= attachment_image_tag item, :image, :fill, 150, 100, fallback: "no_image.jpg", size: "150x100" %><br />
