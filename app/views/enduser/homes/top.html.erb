@@ -1,17 +1,5 @@
 <div class="row">
-  <div class="col-xs-2">
-    <div class="serch-box">
-      <h3 class="text-center">ジャンル検索</h1>
-      <!--ここはジャンルと商品一覧ができたときに差し替え-->
-      <ul>
-        <li class="genle text-left">ケーキ</li>
-        <li class="genle text-left">焼き菓子</li>
-        <li class="genle text-left">プリン</li>
-        <li class="genle text-left">キャンディ</li>
-      </ul>
-      <!--ここまで-->
-    </div>
-  </div>
+  <%= render 'enduser/genres/genre_search', genres: @genres %>
   <div class="col-xs-9 main">
     <div class="row">
       <div class="col-xs-2"></div>
@@ -27,11 +15,13 @@
     <div class="row">
       <h2 class="text-left items-title">オススメ商品</h1>
       <!--ここは商品ができたときに差し替え-->
-      <% (1..4).each do |i| %>
+      <% @items.first(4).each do |item| %>
         <div class="col-xs-3 item-box">
-            <div><%= image_tag 'no_image.jpg', :size =>'180x100' %></div>
-            <div class="item-name-price">商品名</div>
-            <div class="item-name-price">¥0,000</div>
+            <div><%= attachment_image_tag item, :image, :fill, 100, 50, fallback: "no_image.jpg", size: "200x150", class:"center-brock" %></div>
+            <%= link_to enduser_item_path(item) do %>
+              <div class="item-name-price"><%= item.name%></div>
+            <% end %>
+            <div class="item-name-price">¥<%= item.price_before_tax %></div>
         </div>
       <% end %>
       <!--ここまで-->

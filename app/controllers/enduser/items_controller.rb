@@ -4,6 +4,7 @@ class Enduser::ItemsController < Enduser::Base
     @genres = Genre.all
   end
 
+
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
