@@ -4,6 +4,7 @@ class Item < ApplicationRecord
  validates :sales_status, inclusion: {in: Item.sales_statuses.keys }
  attachment :image
  belongs_to :genre
+ has_many :cart_items
 
   def toggle_status!
    if not_sale?
