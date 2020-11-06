@@ -1,21 +1,5 @@
 <div class="row">
-  <div class="col-xs-2">
-  <table class="table table-hover well">
-    <thead>
-      <tr><th>ジャンル検索</th></tr>
-    </thead>
-    <tbody>
-      <% @genres.each do |genre| %>
-        <% if genre.valid_flag == false %>
-            <tr>
-              <!--ジャンルリンク-->
-              <td><%= link_to genre.name, enduser_genre_path(genre) %></td>
-            </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  </div>
+  <%= render 'enduser/genres/genre_search', genres: @genres %>
   <div class="col-xs-10">
     <h2><%= @genre.name %>一覧(全<%= @genre.items.count%>件)</h2>
     <% @genre.items.each do |item| %>
