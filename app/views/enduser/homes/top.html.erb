@@ -15,11 +15,13 @@
     <div class="row">
       <h2 class="text-left items-title">オススメ商品</h1>
       <!--ここは商品ができたときに差し替え-->
-      <% (1..4).each do |i| %>
+      <% @items.first(4).each do |item| %>
         <div class="col-xs-3 item-box">
-            <div><%= image_tag 'no_image.jpg', :size =>'180x100' %></div>
-            <div class="item-name-price">商品名</div>
-            <div class="item-name-price">¥0,000</div>
+            <div><%= attachment_image_tag item, :image, :fill, 100, 50, fallback: "no_image.jpg", size: "200x150", class:"center-brock" %></div>
+            <%= link_to enduser_item_path(item) do %>
+              <div class="item-name-price"><%= item.name%></div>
+            <% end %>
+            <div class="item-name-price">¥<%= item.price_before_tax %></div>
         </div>
       <% end %>
       <!--ここまで-->

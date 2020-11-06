@@ -1,7 +1,7 @@
 <div class="row">
   <%= render 'enduser/genres/genre_search', genres: @genres %>
   <div class="col-xs-10">
-    <h2>商品(全XX件)</h2>
+    <h2>商品(全<%= @items.count %>件)</h2>
     <% @items.each do |item| %>
       <% if item.sales_status == "販売中" %>
         <div class="col-md-3">
