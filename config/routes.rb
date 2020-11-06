@@ -20,9 +20,12 @@ Rails.application.routes.draw do
     #     post :confirm
     #   end
     # end
-    post 'orders/confirm'
-    resources :orders, only: [:new, :create, :index, :show]
     get 'orders/thanks'
+    resources :orders do
+      collection do
+        post 'confirm'
+      end
+    end
     resources :crat_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy'
   end
