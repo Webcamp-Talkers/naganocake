@@ -1,28 +1,31 @@
 class Enduser::CartItemsController < Enduser::Base
   
   def index
-    @items = Item.all
     @cart_items = CartItem.all
-    @cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
-    @total_price = CartItem.total_price
+    # @total_price = @cart_items.total_price
+    #@cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
   end
   
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.end_user_id = current_end_user.id
-    @cart_item.item_id = 
-    
-    if current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
-     
-     current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id]).number += params[:cart_item][:number].to_i
-     current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id]).save
+    @cart_item.enduser_id = current_enduser_enduser.id
+    # もし、カートアイテムの中にすでに同じ商品があった場合
+    if current_enduser_enduser.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+     @cart_item = current_enduser_enduser.cart_items.find_by(item_id: params[:cart_item][:item_id])
+     @cart_item.quantity += params[:cart_item][:quantity].to_i
+     @cart_item.save
      flash[:notice] = "Item was successfully added to cart."
      redirect_to cart_items_path
+     #カートアイテムの中に同じ商品はまだない場合
     elsif @cart_item.save
      flash[:notice] = "New Item was successfully added to cart."
      redirect_to cart_items_path
+     #上記いずれにも当てはまらないエラーの場合
     else
-     render 'end_users/items/show'
+     @genres = Genre.all
+     @item = Item.find_by(id: params[:id])
+     render 'enduser/items/show'
+    # redirect_to enduser_cart_items_path
     end
     
   end
@@ -34,13 +37,13 @@ class Enduser::CartItemsController < Enduser::Base
   end
 
   def all_destroy
-    @cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
-    @cart_item.clear
+    @cart_items = CartItem.all
+    @cart_items.clear
   end
   
   private
-  def cart_params
-    params.require(:cart_item).permit(:quantity)
+  def cart_item_params
+    params.require(:cart_item).permit(:quantity, :item_id)
   end
   
 end

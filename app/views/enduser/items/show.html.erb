@@ -17,13 +17,14 @@
       </div>
       <div class="item price_before_tax">
         <label>税込価格</label>
-        ¥<%= @price_includ_tax %> (税込)<br>
+        ¥<%= (@item.price_before_tax*1.1).floor %> (税込)<br>
       </div>
     </div>
     <div class="col-xs-4">
       <%= form_with model: @cart_item, url: enduser_cart_items_path, local: true do |f| %>
-        <%= f.select :auantity,(1..50), class: "new_cart_item" %>個
-        <%= link_to 'カートに入れる', enduser_cart_items_path, class: "btn btn-primary" %>
+         <%= %>
+      　 <%= f.select :quantity, (1..50) %>個
+         <%= f.submit "カートに入れる", class: "btn btn-primary" %>
       <% end %>
     </div>
 </div>

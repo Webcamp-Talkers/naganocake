@@ -1,9 +1,9 @@
 class CartItem < ApplicationRecord
-  validates :comment, presence: true
+  validates :quantity, presence: true
   belongs_to :item
-  belongs_to :end_user
+  belongs_to :enduser
   
-   def self.total_price
+   def self.sum_price
      array = [] #空の配列を用意し、
      Item.all.each do |item|
      array << item.price_before_tax
