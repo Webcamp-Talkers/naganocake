@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         post 'confirm'
       end
     end
-    resources :crat_items, only: [:index, :create, :update, :destroy]
+    # resources :crat_items, only: [:index, :create, :update, :destroy]
     resources :genres, only: [:show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy'
