@@ -17,7 +17,7 @@ class Enduser::OrdersController < Enduser::Base
     @enduser = current_enduser_enduser
     @order = Order.new
     # @order_items = current_enduser_enduser.order_items
-    @order.method_pay = params[:order][:method_pay]
+    #@order.method_pay = params[:order][:method_pay]
     # if params[:order][:address_option]  == "ご自身の住所"
     #   @order.pastal_code = current_enduser_enduser.postal_code
     #   @order.address = current_enduser_enduser.address
