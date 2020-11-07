@@ -13,10 +13,11 @@ Rails.application.routes.draw do
    }
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :genres, only: [:show]
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm'
     get 'orders/thanks'
-    resources :crat_items, only: [:index, :create, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy'
   end
 

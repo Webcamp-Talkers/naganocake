@@ -1,6 +1,21 @@
 <div class="row">
-  <h2>商品新規登録</h2>
+  <h1>商品新規登録</h1>
+  
    <%= form_with model: @item, url: hostuser_items_path, local: true do |f| %>
+   
+    <!--エラー文-->
+    <% if @item.errors.any? %>
+     <div class=“error_explanation”>
+     <h5 class="text-danger"><%= @item.errors.count %>件のerrorが発生しました。</h5>
+     <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li class="text-danger">●<%= message %></li>
+      <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!--エラー文終わり-->
+    
   　<div class="col-xs-4">
       <div class="field">
         <%= f.label :Image %><br>
@@ -17,18 +32,18 @@
         <%= f.text_field :details, class: "item details" %>
       </div>
       <div class="field">
-        <%= f.label :税抜価格 %><br>
-        <%= f.text_field :price_before_tax, class: "item price_before_tax" %>
+        <%= f.label :ジャンル %><br>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --",) %>
       </div>
       <div class="field">
-        <%= f.label :ジャンル %><br>
-        <%= f.select :genre_id, class: "item sales_status" %>
+        <%= f.label :税抜価格 %><br>
+        <%= f.text_field :price_before_tax, class: "item price_before_tax" %>円
       </div>
       <div class="field">
         <%= f.label :販売ステータス %><br>
-        <%= f.select :sales_status, Item.sales_statuses .keys, {} ,class: "item sales_status" %>
+        <%= f.select :sales_status, Item.sales_statuses .keys, {} , class: "item sales_status form-contro" %>
       </div>
-    </div>  
+    </div>
     <div class="col-xs-4">
       <div class="actions">
         <%= f.submit "新規登録", class: "btn btn-primary" %>
