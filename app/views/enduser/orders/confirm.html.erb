@@ -38,9 +38,7 @@
   <%= @order.address %>
   <%= @order.name %>
   <div class="row">
-    <%= form_with model:@order, url: enduser_orders_thanks_path, local: true do |f| %>
-    <%= f.submit "購入を確認する" %>
-    <% end %>
+    <%= link_to '注文を確定する', enduser_orders_thanks_path, class: 'btn btn-info' %>
   </div>
 </div>
 
