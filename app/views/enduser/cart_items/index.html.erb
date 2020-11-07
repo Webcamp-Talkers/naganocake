@@ -1,4 +1,11 @@
 <div class="row">
+
+  <!--フラッシュメッセージ-->
+  <% if flash[:notice] %>
+   <%= flash[:notice] %>
+  <% end %>
+  <!--フラッシュ終わり-->
+
   <div class="col-md-10 col-md-offset-1">
     <h2>ショッピングカート</h2>
      <table class="table table-striped">
@@ -11,18 +18,18 @@
         </tr>
       </thead>
       <tbody>
-        <% @items.each do |item| %>
-          <%= form_with model: @cart_item, url: enduser_cart_items_path, method: :patch, local: true do |f| %>
+        <% @cart_items.each do |cart_item| %>
+          <%= form_with model: cart_item, url: enduser_cart_items_path, method: :patch, local: true do |f| %>
             <tr>
               <td>
-                <%= attachment_image_tag item, :image, :fill, 30, 20, fallback: "no_image.jpg", size: "30x20" %>
-                <%= item.name %>
+                <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20, fallback: "no_image.jpg", size: "30x20" %>
+                <%= cart_item.item.name %>
               </td>
-              <td><%= (item.price_before_tax*1.1).floor %>円</td>
-              <td><%=  %></td>
-              <td><%= %></td>
+              <td><%= (cart_item.item.price_before_tax*1.1).floor %>円</td>
+              <td><%=  cart_item.quantity %></td>
+              <td><%= cart_item.sum_price%></td>
             </tr>
-          <% end %>  
+          <% end %>
         <% end %>
       </tbody>
     </table>
