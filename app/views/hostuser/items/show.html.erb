@@ -1,4 +1,11 @@
 <div class="row">
+  
+  <!--フラッシュメッセージ-->
+  <% if flash[:notice] %>
+   <%= flash[:notice] %>
+  <% end %>
+  <!--フラッシュ終わり-->
+  
   <h2>商品詳細</h2>
   　<div class="col-xs-4">
   　   <label>商品画像</label>
@@ -12,6 +19,10 @@
       <div class="item details">
         <label>商品説明</label>
         <%= @item.details %><br>
+      </div>
+      <div class="item genre">
+        <label>ジャンル</label>
+        <%= @item.genre.name %><br>
       </div>
       <div class="item price_before_tax">
         <label>税込価格/(税抜価格)</label>

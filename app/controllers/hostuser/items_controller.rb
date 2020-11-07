@@ -1,21 +1,21 @@
 class Hostuser::ItemsController < Hostuser::Base
   def index
-    @items = Item.all
-    @genres = Genre
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    # あとでジャンルidをここに必ず入れる
     if @item.save
-      flash[:notice] = "update successfully"
+      flash[:notice] = "商品の登録が出来ました"
       redirect_to hostuser_item_path(@item.id)
     else
-      render "items/show"
+      @genres = Genre.all
+      render :new
     end
   end
 
@@ -26,22 +26,24 @@ class Hostuser::ItemsController < Hostuser::Base
 
   def edit
     @item = Item.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
     @item = Item.find(params[:id])
-    
+
     if @item.update(item_params)
-      flash[:notice] = "updated successfully."
+      flash[:notice] = "商品情報を更新しました"
       redirect_to hostuser_item_path(@item.id)
     else
-      render "items/edit"
+      @genres = Genre.all
+      render :edit
     end
   end
-  
+
    private
   def item_params
-    params.require(:item).permit(:name, :price_before_tax, :image, :details, :sales_status)
+    params.require(:item).permit(:name, :price_before_tax, :image, :details, :sales_status,:genre_id)
   end
 
 end

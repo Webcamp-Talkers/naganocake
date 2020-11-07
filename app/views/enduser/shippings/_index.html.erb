@@ -1,0 +1,8 @@
+<% shippings.each do |shipping| %>
+<tr>
+	<td><%= shipping.postal_code %></td>
+	<td><%= shipping.address %></td>
+	<td><%= shipping.name %></td>
+	<td><%= link_to "編集する",edit_enduser_shipping_path(shipping), class:"btn btn-primary" %><%= link_to "削除する", enduser_shipping_path(shipping), method: :delete, remote: true, class:"btn btn-danger" %></td>
+</tr>
+<% end %>
