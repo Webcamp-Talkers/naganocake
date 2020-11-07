@@ -3,13 +3,14 @@ class Enduser::CartItemsController < Enduser::Base
   def index
     @items = Item.all
     @cart_items = CartItem.all
-    # @cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
+    @cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
     @total_price = CartItem.total_price
   end
-
+  
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
+    @cart_item.item_id = 
     
     if current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
      
@@ -33,6 +34,8 @@ class Enduser::CartItemsController < Enduser::Base
   end
 
   def all_destroy
+    @cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
+    @cart_item.clear
   end
   
   private
