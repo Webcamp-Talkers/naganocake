@@ -22,6 +22,14 @@
   padding: 0;
   box-sizing: border-box;
  }
+ 
+ .alert-notice {
+  @extend .alert-info;
+ }
+
+ .alert-alert {
+  @extend .alert-danger;
+ }
 
  ul {
    list-style: none;
@@ -30,3 +38,4 @@
  .enduser_show {
    margin: 30px;
  }
+ 

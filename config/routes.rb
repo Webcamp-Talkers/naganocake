@@ -8,15 +8,22 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
   namespace :enduser do
-    devise_for :endusers, :controllers => {
+
+  devise_for :endusers, :controllers => {
     :sessions => 'endusers/sessions', :registrations => 'endusers/registrations', :passwords => 'endusers/passwords'
-   }
+  }
+
     resources :shippings, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :create, :index, :show]
-    post 'orders/confirm'
     get 'orders/thanks'
+    resources :orders do
+      collection do
+        post 'confirm'
+      end
+    end
     resources :crat_items, only: [:index, :create, :update, :destroy]
+    resources :genres, only: [:show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy'
   end
 

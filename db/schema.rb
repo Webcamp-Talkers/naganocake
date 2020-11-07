@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_072153) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "valid_flag", default: false
+    t.boolean "valid_flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_072153) do
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.string "method_pay"
+    t.integer "method_pay"
     t.integer "delivery_fee"
     t.integer "price_include_tax"
     t.integer "order_status"
