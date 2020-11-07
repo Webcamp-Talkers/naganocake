@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_072153) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "enduser_id"
     t.integer "item_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_072153) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "valid_flag", default: true
+    t.boolean "valid_flag", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
