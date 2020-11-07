@@ -6,27 +6,27 @@ class Enduser::OrdersController < Enduser::Base
   end
 
   def create
-    @order = Order.find(params[:id])
+    @order = Order.new(order_params)
     @order.save
     redirect_to enduser_orders_thanks_path
   end
 
   def confirm
-    return if @order
-      render :confirm
+    #return if @order
     @enduser = current_enduser_enduser
-    @order = Order.new
-    # @order_items = current_enduser_enduser.order_items
-    #@order.method_pay = params[:order][:method_pay]
-    # if params[:order][:address_option]  == "ご自身の住所"
-    #   @order.pastal_code = current_enduser_enduser.postal_code
-    #   @order.address = current_enduser_enduser.address
-    # elsif params[:order][:address_option] == "発送済みの住所"
-    #   @sta = params[:order][:order_adderss].to_i
-
-    # else
-
-    # end
+    @shipping = current_enduser_enduser.shippings
+    @order = Order.new(order_params)
+    if params[:order][:order] == '0'
+      @order.postal_code = @enduser.postal_code
+      @order.address = @enduser.address
+      @order.name = @enduser.first_name
+    elsif params[:order][:order] == '1'
+      @address = Shipping.find(params[:order][:id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    end
+    #render :confirm
   end
 
   def thanks
