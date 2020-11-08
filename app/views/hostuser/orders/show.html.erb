@@ -1,29 +1,21 @@
 <div class="row" style="width:70%; margin:0 auto;">
   <h2>注文履歴詳細</h2>
   <div class="row">
-    <%= link_to hostuser_path(enduser) do %>
-    <h4><b>購入者</b>  <%= @enduser.first_name %><%= @enduser.last_name %></h4>
+    <%= link_to hostusers_path do %>
+    <h4><b>購入者</b><%= @order.name %></h4>
+    <% end %>
     <div class="enduser_show">
-      <h4><b>配送先</b>  <%= @enduser.order.postal_code %><%= @enduser.order.address %><br>
-      <%= @enduser.order.name %></h4>
+      <h4><b>配送先</b>  <%= @order.postal_code %><%= @order.address %><br>
+      <%= @order.name %></h4>
     </div>
     <div class="enduser_show">
-      <h4><b>支払方法</b></h4>  <%= @enduser.order.method_pay %></h4>
+      <h4><b>支払方法</b><%= @order.method_pay %></h4>
     </div>
     <div class="enduser_show">
-      <h4><b>注文ステータス</b>  </h4>
+      <h4><b>注文ステータス</b></h4>
       <%#= form_with model:@order local: true do |f| %>
 
       <!--<#% end %>-->
-    </div>
-    <div class="enduser_show">
-      <h4>住所  <%= @enduser.address %></h4>
-    </div>
-    <div class="enduser_show">
-      <h4>電話番号  <%= @enduser.phone_number %></h4>
-    </div>
-    <div class="enduser_show">
-      <h4>メールアドレス  <%= @enduser.email %></h4>
     </div>
   </div>
   <div class="row">
@@ -31,4 +23,3 @@
     <%= link_to "注文履歴一覧を見る", hostuser_path, class: 'btn btn-info' %>
   </div>
 </div>
-
