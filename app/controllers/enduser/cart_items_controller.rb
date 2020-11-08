@@ -16,12 +16,12 @@ class Enduser::CartItemsController < Enduser::Base
      @cart_item = current_enduser_enduser.cart_items.find_by(item_id: params[:cart_item][:item_id])
      @cart_item.quantity += params[:cart_item][:quantity].to_i
      @cart_item.save
-     flash[:notice] = "Item was successfully added to cart."
+     flash[:notice] = "カートの中身を更新しました"
      redirect_to enduser_cart_items_path
      #カートアイテムの中に同じ商品はまだない場合
     elsif current_enduser_enduser.cart_items.find_by(item_id: params[:cart_item][:item_id]).nil?
      @cart_item.save
-     flash[:notice] = "New Item was successfully added to cart."
+     flash[:notice] = "カートに新しい商品を追加しました"
      redirect_to enduser_cart_items_path
      #上記いずれにも当てはまらないエラーの場合
     else
@@ -49,13 +49,14 @@ class Enduser::CartItemsController < Enduser::Base
   def destroy
    cart_item = CartItem.find_by(id: params[:id])
    cart_item.destroy
-   flash[:notice] = "カートの中身を空にしました"
+   flash[:notice] = "選択した商品を削除しました"
    redirect_back(fallback_location: cart_item)
   end
 
   def all_destroy
     @cart_items = CartItem.all
     @cart_items.destroy_all
+    flash[:notice] = "カートの中身を空にしました"
     redirect_back(fallback_location: enduser_cart_items_path)
   end
 
