@@ -12,10 +12,11 @@ class Enduser::OrdersController < Enduser::Base
   end
 
   def confirm
-    #return if @order
+    @order = Order.new(order_params)
     @enduser = current_enduser_enduser
     @shipping = current_enduser_enduser.shippings
-    @order = Order.new(order_params)
+    @carts = @enduser.cart_items.all
+    @cart = @enduser.cart_items.find_by(cart_id(params[:cart_id]))
     if params[:order][:order] == '0'
       @order.postal_code = @enduser.postal_code
       @order.address = @enduser.address
@@ -33,12 +34,14 @@ class Enduser::OrdersController < Enduser::Base
   end
 
   def index
-    @orders = Order.all
+    @enduser = current_enduser_enduser
+    @orders = @enduser.orders.all
   end
 
   def show
-    @order = Order.all
     @enduser = current_enduser_enduser
+    @orders = @enduser.orders.all
+    @order = Order.find(params[:id])
     @shipping = current_enduser_enduser.shippings
   end
 
