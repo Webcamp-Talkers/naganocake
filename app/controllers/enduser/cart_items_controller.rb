@@ -49,13 +49,14 @@ class Enduser::CartItemsController < Enduser::Base
   def destroy
    cart_item = CartItem.find_by(id: params[:id])
    cart_item.destroy
+   flash[:notice] = "カートの中身を空にしました"
    redirect_back(fallback_location: cart_item)
   end
 
   def all_destroy
     @cart_items = CartItem.all
     @cart_items.destroy_all
-    redirect_back enduser_cart_items_path
+    redirect_back(fallback_location: enduser_cart_items_path)
   end
 
   private
