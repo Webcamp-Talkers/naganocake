@@ -6,7 +6,7 @@
       <table class="table table-bordered">
         <tr>
           <th>注文日</th>
-
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <th>配送先</th>
@@ -54,14 +54,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @carts.each do |cart| %>
-          <tr>
-            <td><%= cart.name %></td>
-            <td><%= cart.price_before_tax*tax %></td>
-            <td><%= cart.quantity %></td>
-            <td><%= cart.order_price %></td>
-          </tr>
-        <% end %>
+       
+       
       </tbody>
     </table>
   </div>

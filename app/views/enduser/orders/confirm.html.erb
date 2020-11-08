@@ -12,12 +12,16 @@
           </tr>
         </thead>
         <tbody>
-          
-          <tr>
-            <td>
-              
-            </td>
-          </tr>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.with_tax_price*1.1 %>円</td>
+              <td>
+
+              </td>
+              <td><%= cart_item.sub_total_price*1.1 %>円</td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -29,11 +33,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td></td>
+          <td>合計金額(税込)  <%= @total_price %>円</td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td></td>
+          <td>合計金額(税込)  <%= @total_price + 800 %>円</td>
         </tr>
       </table>
     </div>
@@ -54,7 +58,7 @@
 
     <%= f.hidden_field :order_status, value: "入金待ち" %>
 
-    <%= f.submit "購入を確認する" %>
+    <%= f.submit "購入を確認する", class: 'btn btn-info' %>
   <% end %>
 
 </div>
