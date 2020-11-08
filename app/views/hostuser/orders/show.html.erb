@@ -1,19 +1,20 @@
 <div class="row" style="width:70%; margin:0 auto;">
   <h2>注文履歴詳細</h2>
   <div class="row">
-    <%= link_to hostuser_path(enduser) do %>
+    <%= link_to hostuser_path(@enduser) do %>
     <h4><b>購入者</b>  <%= @enduser.first_name %><%= @enduser.last_name %></h4>
+    <% end %>
     <div class="enduser_show">
-      <h4><b>配送先</b>  <%= @enduser.order.postal_code %><%= @enduser.order.address %><br>
+      <h4><b>配送先</b>  <%= @order.postal_code %><%= @order.address %><br>
       <%= @enduser.order.name %></h4>
     </div>
     <div class="enduser_show">
-      <h4><b>支払方法</b></h4>  <%= @enduser.order.method_pay %></h4>
+      <h4><b>支払方法</b>  <%= @enduser.order.method_pay %></h4>
     </div>
     <div class="enduser_show">
       <h4><b>注文ステータス</b>  </h4>
-      <%= form_with model:@order local: true do |f| %>
-
+      <%= form_with model:@order, url: hostuser_order_path(@order), local: true do |f| %>
+        <%= f.select :order_status %> <%= f.submit "更新", class: 'btn btn-info' %>
       <% end %>
     </div>
     <div class="enduser_show">
