@@ -1,21 +1,19 @@
 class Hostuser::OrdersController < Hostuser::Base
   
   def index
+    @endusers = Enduser.all
     @orders = Order.all
+    # @order_items = Order_item.all
   end
 
   def show
+    @enduser = Enduser.find(params[:id])
     @order = Order.find(params[:id])
-	  @order_items = @order.order_items
   end
 
   def update
     @order = Order.find(params[:id])
-		if @order.update(order_params)
-	    redirect_to hostuser_order_path(@order)
-		else
-		  render "show"
-		end
+
   end
   
   private

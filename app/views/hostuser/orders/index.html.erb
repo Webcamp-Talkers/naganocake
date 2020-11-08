@@ -16,19 +16,19 @@
             <tr>
               <td><%= order.created_at.strftime('%Y/%m/%d %H%M%S') %></td>
               <td>
-                <%= link_to hostuser_path(enduser) do %>
-                  <%= enduser.first_name %><%= enduser.last_name %>
+                <%= link_to hostuser_order_path(order) do %>
+                  <%= order.enduser.first_name %><%= order.enduser.last_name %>
                 <% end %>
               </td>
-              <td><%= enduser.order_items.quantity %></td>
+              <td><% order.order_items %></td>
               <td>
-                <% if enduser.order_status == 1 %>
+                <% if order.order_status == 1 %>
                   入金待ち
-                <% elsif enduser.order_status == 2 %>
-                  入金待ち
-                <% elsif enduser.order_status  == 3 %>
+                <% elsif order.order_status == 2 %>
+                  入金確認
+                <% elsif order.order_status  == 3 %>
                   制作中
-                <% elsif enduser.order_status == 4 %>
+                <% elsif order.order_status == 4 %>
                   発送準備中
                 <% else %>
                   発送済み
