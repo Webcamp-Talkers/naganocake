@@ -1,11 +1,13 @@
 class Enduser::CartItemsController < Enduser::Base
-  
+
   def index
     @cart_items = CartItem.all
-    # @total_price = @cart_items.total_price
-    #@cart_item = CartItem.where(enduser_id: current_enduser_enduser.id)
+    @total_price = 0
+    @cart_items.each do |cart_item|
+     @total_price += cart_item.sub_total_price
+    end
   end
-  
+
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.enduser_id = current_enduser_enduser.id
@@ -15,11 +17,12 @@ class Enduser::CartItemsController < Enduser::Base
      @cart_item.quantity += params[:cart_item][:quantity].to_i
      @cart_item.save
      flash[:notice] = "Item was successfully added to cart."
-     redirect_to cart_items_path
+     redirect_to enduser_cart_items_path
      #カートアイテムの中に同じ商品はまだない場合
-    elsif @cart_item.save
+    elsif current_enduser_enduser.cart_items.find_by(item_id: params[:cart_item][:item_id]).nil?
+     @cart_item.save
      flash[:notice] = "New Item was successfully added to cart."
-     redirect_to cart_items_path
+     redirect_to enduser_cart_items_path
      #上記いずれにも当てはまらないエラーの場合
     else
      @genres = Genre.all
@@ -27,23 +30,37 @@ class Enduser::CartItemsController < Enduser::Base
      render 'enduser/items/show'
     # redirect_to enduser_cart_items_path
     end
-    
+
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])  
+    
+    if @cart_item.update(cart_item_params)
+      flash[:notice] = "カートの中身を更新しました"
+      redirect_back(fallback_location: @cart_item)
+    else
+      flash[:notice] = "カートの更新に失敗しました"
+      render　"enduser/cart_items/index"
+    end
+    
   end
 
   def destroy
+   cart_item = CartItem.find_by(id: params[:id])
+   cart_item.destroy
+   redirect_back(fallback_location: cart_item)
   end
 
   def all_destroy
     @cart_items = CartItem.all
-    @cart_items.clear
+    @cart_items.destroy_all
+    redirect_back enduser_cart_items_path
   end
-  
+
   private
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :item_id)
   end
-  
+
 end

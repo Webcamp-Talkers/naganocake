@@ -22,7 +22,7 @@
     </div>
     <div class="col-xs-4">
       <%= form_with model: @cart_item, url: enduser_cart_items_path, local: true do |f| %>
-         <%= %>
+         <%= f.hidden_field :item_id, value: @item.id %>
       　 <%= f.select :quantity, (1..50) %>個
          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
       <% end %>
