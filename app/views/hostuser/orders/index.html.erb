@@ -22,13 +22,13 @@
               </td>
               <td><% order.order_items %></td>
               <td>
-                <% if order.order_status == 1 %>
+                <% if order.order_status == 0 %>
                   入金待ち
-                <% elsif order.order_status == 2 %>
+                <% elsif order.order_status == 1 %>
                   入金確認
-                <% elsif order.order_status  == 3 %>
+                <% elsif order.order_status  == 2 %>
                   制作中
-                <% elsif order.order_status == 4 %>
+                <% elsif order.order_status == 3 %>
                   発送準備中
                 <% else %>
                   発送済み
