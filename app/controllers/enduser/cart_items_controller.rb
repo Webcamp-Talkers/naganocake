@@ -2,7 +2,10 @@ class Enduser::CartItemsController < Enduser::Base
 
   def index
     @cart_items = CartItem.all
-    @cart_
+    @total_price = 0
+    @cart_items.each do |cart_item|
+     @total_price += cart_item.sub_total_price
+    end
   end
 
   def create
@@ -38,7 +41,8 @@ class Enduser::CartItemsController < Enduser::Base
 
   def all_destroy
     @cart_items = CartItem.all
-    @cart_items.clear
+    @cart_items.destroy_all
+    redirect_back enduser_cart_items_path
   end
 
   private

@@ -4,7 +4,7 @@
     <h2>ショッピングカート</h2>
     
     <div class="text-right">
-     <%= link_to "カートを空にする", enduser_cart_items_all_destroy_path, method: :delete, class: "btn btn-danger" %>
+     <%= link_to "カートを空にする", enduser_cart_items_all_destroy_path, method: :delete, class: "btn btn-danger","data-confirm" => "本当に消しますか？" %>
     </div>
     
      <table class="table table-striped">
@@ -33,5 +33,11 @@
       </tbody>
     </table>
     <%= link_to "買い物を続ける", enduser_items_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-xs-2 col-xs-offset-9 text-right">
+  　<table class="table table-hover well">
+  　  <thead><tr><th>合計金額</th></tr></thead>
+  　  <tbody><tr><td><%= @total_price %></td></tr></tbody>
+  　</table>
   </div>
 </div>
