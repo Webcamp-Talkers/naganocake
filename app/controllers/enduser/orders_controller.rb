@@ -15,7 +15,7 @@ class Enduser::OrdersController < Enduser::Base
     @order = Order.new(order_params)
     @enduser = current_enduser_enduser
     @shipping = current_enduser_enduser.shippings
-    # @cart_items = @enduser.cart_items.all
+    @carts = @enduser.cart_items.all
 
     if params[:order][:order] == '0'
       @order.postal_code = @enduser.postal_code
