@@ -55,7 +55,7 @@ class Enduser::CartItemsController < Enduser::Base
   def all_destroy
     @cart_items = CartItem.all
     @cart_items.destroy_all
-    redirect_ enduser_cart_items_path
+    redirect_back enduser_cart_items_path
   end
 
   private
