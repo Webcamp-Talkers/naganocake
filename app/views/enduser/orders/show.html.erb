@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <td><%= @enduser.orders.postal_code %><br>
+          <td><%= @order.postal_code %><br>
           <%= @order.address %><br>
           <%= @order.name %></td>
         </tr>
@@ -54,12 +54,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @items.each do |item| %>
+        <% @carts.each do |cart| %>
           <tr>
-            <td><%= item.name %></td>
-            <td><%= item.price_before_tax*tax %></td>
-            <td><%= item.quantity %></td>
-            <td><%= item.order_price %></td>
+            <td><%= cart.name %></td>
+            <td><%= cart.price_before_tax*tax %></td>
+            <td><%= cart.quantity %></td>
+            <td><%= cart.order_price %></td>
           </tr>
         <% end %>
       </tbody>
