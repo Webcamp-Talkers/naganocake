@@ -34,15 +34,28 @@ class Enduser::CartItemsController < Enduser::Base
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])  
+    
+    if @cart_item.update(cart_item_params)
+      flash[:notice] = "カートの中身を更新しました"
+      redirect_back(fallback_location: @cart_item)
+    else
+      flash[:notice] = "カートの更新に失敗しました"
+      render　"enduser/cart_items/index"
+    end
+    
   end
 
   def destroy
+   cart_item = CartItem.find_by(id: params[:id])
+   cart_item.destroy
+   redirect_back(fallback_location: cart_item)
   end
 
   def all_destroy
     @cart_items = CartItem.all
     @cart_items.destroy_all
-    redirect_back enduser_cart_items_path
+    redirect_ enduser_cart_items_path
   end
 
   private
