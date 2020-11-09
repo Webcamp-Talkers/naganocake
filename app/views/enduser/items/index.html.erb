@@ -7,7 +7,7 @@
         <div class="col-xs-3">
 　　　　　<%= attachment_image_tag item, :image, :fill, 150, 100, fallback: "no_image.jpg", size: "150x100" %><br />
           <%= link_to item.name, enduser_item_path(item) %><br />
-          ¥<%= item.price_before_tax.to_s(:delimited) %>円<br />
+          ¥<%= item.price_before_tax.to_s(:delimited) %>円(税抜き)<br />
         </div>
       <% end %>
     <% end %>
