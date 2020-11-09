@@ -46,7 +46,7 @@
   <h3>支払い方法</h3>
   <%= @order.method_pay %>
   <h3>お届け先</h3>
-  <%= @order.postal_code %>
+  〒 <%= @order.postal_code %>
   <%= @order.address %>
   <%= @order.name %>
   <%= form_with model:@order, url: enduser_orders_path, method: :post, local: true do |f| %>
