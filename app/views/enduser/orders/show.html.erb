@@ -29,7 +29,7 @@
       <table class="table table-bordered">
         <tr>
           <th>商品合計</th>
-          <td></td>
+          <td><%= @order.price_include_tax - 800 %> 円</td>
         </tr>
         <tr>
           <th>配送料</th>
@@ -37,7 +37,7 @@
         </tr>
         <tr>
           <th><b>ご請求額</b></th>
-          <td></td>
+          <td><%= @order.price_include_tax %> 円</td>
         </tr>
       </table>
     </div>
@@ -54,14 +54,14 @@
         </tr>
       </thead>
       <tbody>
-        <% @orders.each do |order| %>
+        <% @order.order_items.each do |order_items| %>
           <tr>
-            <td><%= order.name %></td>
-            <td><%= order.price_include_tax %></td>
-            <td><%= order.quantity %></td>
-            <td><%= order.sub_total_price*1.1.round %></td>
+            <td><%= order_items.item.name %></td>
+            <td><%= (order_items.item.price_before_tax*1.1).floor %> 円</td>
+            <td><%= order_items.quantity %> 個</td>
+            <td><%= (order_items.item.price_before_tax*1.1).floor*order_items.quantity %> 円</td>
           </tr>
-        <% end %>
+          <% end %>
       </tbody>
     </table>
   </div>
