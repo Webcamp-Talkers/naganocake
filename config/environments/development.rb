@@ -33,10 +33,10 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   # メール設定
   # config.action_mailer.raise_delivery_errors = false
-  
-  config.action_mailer.default_url_options = {  protocol: 'https', host: 'eb88168bcc174837822ba03c20fcdd47.vfs.cloud9.us-east-1.amazonaws.com' }
-  # mail setting
   config.action_mailer.raise_delivery_errors = true
+  
+  config.action_mailer.default_url_options = { host: 'https://eb88168bcc174837822ba03c20fcdd47.vfs.cloud9.us-east-1.amazonaws.com' }
+  # mail setting
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
