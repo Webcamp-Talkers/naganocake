@@ -1,4 +1,4 @@
-<div class="row" style="margin: 0 auto;">
+<div class="container" style="margin: 0 auto;">
   <h2>注文履歴詳細</h2>
   <div class="row">
     <div class="col-xs-8">
@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <td><%= @order.postal_code %><br>
+          <td>〒 <%= @order.postal_code %><br>
           <%= @order.address %><br>
           <%= @order.name %></td>
         </tr>
@@ -29,7 +29,7 @@
       <table class="table table-bordered">
         <tr>
           <th>商品合計</th>
-          <td></td>
+          <td><%= @delivery_fee.to_s(:delimited) %> 円</td>
         </tr>
         <tr>
           <th>配送料</th>
@@ -37,32 +37,35 @@
         </tr>
         <tr>
           <th><b>ご請求額</b></th>
-          <td></td>
+          <td><%= @order.price_include_tax.to_s(:delimited) %> 円</td>
         </tr>
       </table>
     </div>
   </div>
-  <div class="row">
-    <h4>注文内容</h4>
-    <table class="table table-bordered">
-      <thead>
+  <h4>注文内容</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>商品</th>
+        <th>単価(税込)</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |order_items| %>
         <tr>
-          <th>商品</th>
-          <th>単価(税込)</th>
-          <th>個数</th>
-          <th>小計</th>
+          <td>
+            <%= attachment_image_tag order_items.item, :image, :fill, 30, 20, fallback: "no_image.jpg", size: "30x20" %>
+            <%= order_items.item.name %>
+          </td>
+          <td><%= (order_items.item.price_before_tax*1.1).floor.to_s(:delimited) %> 円</td>
+          <td><%= order_items.quantity %> 個</td>
+          <td><%= (order_items.item.price_before_tax*1.1).floor.*order_items.quantity %> 円</td>
         </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.name %></td>
-            <td><%= order.price_include_tax %></td>
-            <td><%= order.quantity %></td>
-            <td><%= order.sub_total_price*1.1.round %></td>
-          </tr>
         <% end %>
-      </tbody>
-    </table>
-  </div>
+    </tbody>
+  </table>
 </div>
+
+

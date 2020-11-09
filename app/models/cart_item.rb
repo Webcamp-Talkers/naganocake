@@ -8,7 +8,7 @@ class CartItem < ApplicationRecord
     (self.item.price_before_tax * 1.1).floor
   end
   
-  # 小径の計算
+  # 小計の計算
   def sub_total_price
     (self.quantity) * (self.item.price_before_tax*1.1).floor 
   end
