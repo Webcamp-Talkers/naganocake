@@ -13,6 +13,7 @@ class Hostuser::OrdersController < Hostuser::Base
 
   def update
     @order = Order.find(params[:id])
+    @order.update(order_params)
   end
 
   private

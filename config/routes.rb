@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:show]
     delete 'cart_items/all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    
+
   end
 
   scope module: :hostuser do

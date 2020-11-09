@@ -13,18 +13,12 @@
     </div>
     <div class="enduser_show">
       <h4><b>注文ステータス</b>
-      <% if @order.order_status == 1 %>
-        入金待ち
-      <% elsif @order.order_status == 2 %>
-        入金確認
-      <% elsif @order.order_status  == 3 %>
-        制作中
-      <% elsif @order.order_status == 4 %>
-        発送準備中
-      <% else %>
-        発送済み
-      <% end %>
+        <%= form_with url: hostuser_order_path(@order), method: :post, local: true do |f| %>
+        <%= f.select :order_status, Order.order_statuses .keys, {} %>
+        <%= f.submit "update" %>
+        <% end %>
       </h4>
+
     <table class="table">
       <thead>
        <tr>
@@ -36,16 +30,22 @@
        </tr>
       </thead>
       <tbody>
-        <% @order_items.each do |order_item| %>
+        <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
-          <td>¥<br></td>
-          <td></td>
-          <td>¥</td>
+          <td>¥<%= (order_item.item.price_before_tax*1.1).floor %><br></td>
+          <td><%= order_item.quantity %> 個</td>
+          <td>¥<%= (order_item.item.price_before_tax*1.1).floor*order_item.quantity %> 円</td>
+
+          <%#= form_with model: @item, url: hostuser_items_path, local: true do |f| %>
+          <%#= form_for(order_item, url: hostuser_order_item_path(order_item), method: :patch) do |f| %>
           <td>
-          <%= f.select :produciton_status, OrderItems.produciton_statuses.keys, class: "order_status" %>
-			    <%= f.submit '更新'  ,class: "btn btn-warning" %>
+          <%#= f.select :produciton_status, OrderItems.produciton_statuses.keys, class: "order_status" %>
+			    <%#= f.submit '更新'  ,class: "btn btn-warning" %>
           </td>
+          <!--<#% end %>-->
+
+
         </tr>
         <% end %>
       </tbody>
