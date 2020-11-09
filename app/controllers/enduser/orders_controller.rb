@@ -7,9 +7,7 @@ class Enduser::OrdersController < Enduser::Base
 
   def create
     @order = Order.new(order_params)
-    # byebug
     @order.save
-    byebug
     redirect_to enduser_orders_thanks_path
   end
 
