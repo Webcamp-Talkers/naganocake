@@ -20,7 +20,7 @@
                   <%= order.enduser.first_name %><%= order.enduser.last_name %>
                 <% end %>
               </td>
-              <td><% order.order_items %></td>
+              <td><%= order.order_items.sum(:quantity) %></td>
               <td>
                 <% if order.order_status == 1 %>
                   入金待ち
