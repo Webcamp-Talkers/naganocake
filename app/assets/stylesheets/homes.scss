@@ -1,4 +1,7 @@
 #homes-top {
+  .homes{
+    padding: 0;
+  }
   .serch-box {
     border: 1px solid;
     ul {
@@ -35,11 +38,7 @@
 }
 
 #homes-about{
-  .title{
-    margin: 40px 0;
-    font-size: 70px;
-  }
-  .text{
-    margin-bottom: 40px;
+  h1{
+    font-size: 50px;
   }
 }
