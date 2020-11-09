@@ -8,6 +8,17 @@ class Enduser::OrdersController < Enduser::Base
   def create
     @order = Order.new(order_params)
     @order.save
+    @enduser = current_enduser_enduser
+    @carts = CartItem.all
+    @carts.each do |cart_item|
+      @order_item = @order.order_items.new
+      @order_item.order_id = @order.id
+      @order_item.item_id = cart_item.item_id
+      @order_item.quantity = cart_item.quantity
+      @order_item.order_price = cart_item.sub_total_price*1.1.round
+      @order_item.save
+    end
+    # current_enduser_enduser.carts.destroy.all
     redirect_to enduser_orders_thanks_path
   end
 
@@ -20,6 +31,11 @@ class Enduser::OrdersController < Enduser::Base
     @cart_items.each do |cart_item|
     @total_price += cart_item.sub_total_price
     end
+<<<<<<< HEAD
+=======
+    @price_include_tax = @total_price + 800
+
+>>>>>>> origin/develop
     if params[:order][:order] == '0'
       @order.postal_code = @enduser.postal_code
       @order.address = @enduser.address
@@ -50,8 +66,7 @@ class Enduser::OrdersController < Enduser::Base
 
   private
    def order_params
-   params.require(:order).permit(:enduser_id, :postal_code, :address, :name, :method_pay, :delivery_fee, :order_status)
-   #@order = Order.new(params.require(:order).permit(:postal_code, :address, :name, :method_pay))
+   params.require(:order).permit(:enduser_id, :postal_code, :address, :name, :method_pay, :delivery_fee, :order_status, :price_include_tax)
    end
 
   # def current_enduser
