@@ -14,6 +14,7 @@ class Hostuser::OrdersController < Hostuser::Base
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
+    redirect_to hostuser_orders_path(@order)
   end
 
   private
