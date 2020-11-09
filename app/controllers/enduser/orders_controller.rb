@@ -59,6 +59,7 @@ class Enduser::OrdersController < Enduser::Base
     @orders = @enduser.orders.all
     @order = Order.find(params[:id])
     @shipping = current_enduser_enduser.shippings
+    @delivery_fee = @order.price_include_tax - 800
   end
 
   private
