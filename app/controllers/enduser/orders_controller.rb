@@ -18,7 +18,7 @@ class Enduser::OrdersController < Enduser::Base
       @order_item.order_price = cart_item.sub_total_price*1.1.round
       @order_item.save
     end
-    # current_enduser_enduser.carts.destroy.all
+    @enduser.cart_items.destroy_all
     redirect_to enduser_orders_thanks_path
   end
 
@@ -51,7 +51,7 @@ class Enduser::OrdersController < Enduser::Base
 
   def index
     @enduser = current_enduser_enduser
-    @orders = @enduser.orders.all
+    @orders = @enduser.orders.page(params[:page]).reverse_order
   end
 
   def show
