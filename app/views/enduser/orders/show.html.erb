@@ -54,8 +54,14 @@
         </tr>
       </thead>
       <tbody>
-       
-       
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.name %></td>
+            <td><%= order.price_include_tax %></td>
+            <td><%= order.quantity %></td>
+            <td><%= order.sub_total_price*1.1.round %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

@@ -14,7 +14,10 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td><%= cart_item.item.name %></td>
+              <td>
+                <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20, fallback: "no_image.jpg", size: "30x20" %>
+                <%= cart_item.item.name %>
+              </td>
               <td><%= cart_item.with_tax_price*1.1.round %>円</td>
               <td><%= cart_item.quantity %></td>
               <td><%= cart_item.sub_total_price*1.1.round %>円</td>
@@ -53,7 +56,7 @@
     <%= f.hidden_field :name, value: @order.name %>
     <%= f.hidden_field :method_pay, value: @order.method_pay %>
     <%= f.hidden_field :delivery_fee, value: 800 %>
-
+    <%= f.hidden_field :price_include_tax, value: @price_include_tax %>
     <%= f.hidden_field :order_status, value: "入金待ち" %>
 
     <%= f.submit "購入を確定する", class: 'btn btn-info' %>
