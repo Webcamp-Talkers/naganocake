@@ -23,7 +23,7 @@ class Enduser::ShippingsController < Enduser::Base
 
   def update
     if @shipping.update(shipping_params)
-      redirect_to enduser_shippings_path, notice: "編集に成功しました"
+      redirect_to enduser_shippings_path, notice: "配送先を編集しました"
     else
       flash.now[:alert] = '入力に不備があります'
       render 'enduser/shippings/edit'

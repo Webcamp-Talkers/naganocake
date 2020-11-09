@@ -7,7 +7,7 @@ class Enduser < ApplicationRecord
   has_many :shippings, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
-  
+
   with_options presence: true do
   validates :first_name
   validates :last_name
