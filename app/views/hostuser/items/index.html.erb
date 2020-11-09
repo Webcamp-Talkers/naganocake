@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-xs-12">
     <h1>商品一覧</h1>
-    <br>
+    <p class="text-right">
+      <%= link_to '', new_hostuser_item_path, class: "glyphicon glyphicon-plus-sign text-danger" %>
+    </p>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -17,7 +19,7 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to item.name, hostuser_item_path(item) %></td>
-            <td><%= item.price_before_tax %></td>
+            <td><%= item.price_before_tax.to_s(:delimited) %></td>
             <td><%= item.genre.name %></td>
             <td><%= item.sales_status %></td>
           </tr>
