@@ -31,11 +31,7 @@ class Enduser::OrdersController < Enduser::Base
     @cart_items.each do |cart_item|
     @total_price += cart_item.sub_total_price
     end
-<<<<<<< HEAD
-=======
     @price_include_tax = @total_price + 800
-
->>>>>>> origin/develop
     if params[:order][:order] == '0'
       @order.postal_code = @enduser.postal_code
       @order.address = @enduser.address
