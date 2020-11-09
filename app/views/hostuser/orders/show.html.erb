@@ -12,10 +12,43 @@
       <h4><b>支払方法</b><%= @order.method_pay %></h4>
     </div>
     <div class="enduser_show">
-      <h4><b>注文ステータス</b></h4>
-      <%#= form_with model:@order local: true do |f| %>
-      <!--<#% end %>-->
-    </div>
+      <h4><b>注文ステータス</b>
+      <% if @order.order_status == 1 %>
+        入金待ち
+      <% elsif @order.order_status == 2 %>
+        入金確認
+      <% elsif @order.order_status  == 3 %>
+        制作中
+      <% elsif @order.order_status == 4 %>
+        発送準備中
+      <% else %>
+        発送済み
+      <% end %>
+      </h4>
+    <table class="table">
+      <thead>
+       <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+       </tr>
+      </thead>
+      <tbody>
+        <% @order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.item.name %></td>
+          <td>¥<br></td>
+          <td></td>
+          <td>¥</td>
+          <td>
+          <%= f.select :produciton_status, OrderItems.produciton_statuses.keys, class: "order_status" %>
+			    <%= f.submit '更新'  ,class: "btn btn-warning" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
   </div>
   <div class="row">
     <%= link_to "編集する", edit_hostuser_path, class: 'btn btn-success' %>

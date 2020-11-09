@@ -8,6 +8,7 @@ class Hostuser::OrdersController < Hostuser::Base
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def update
