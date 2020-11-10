@@ -1,5 +1,10 @@
 <div class="row" style="width:70%; margin:0 auto;">
   <h2>注文履歴詳細</h2>
+
+  <div class="flash">
+  <%= flash[:notice] %>
+</div>
+
   <div class="row">
     <%= link_to hostusers_path do %>
     <h4><b>購入者</b><%= @order.name %></h4>
@@ -40,7 +45,7 @@
 
           <%= form_for(order_item, url: hostuser_order_item_path(order_item), method: :patch) do |f| %>
           <td>
-          <%= f.select :produciton_status, OrderItem.produciton_statuses.keys, {} %>
+          <%= f.select :make_status, OrderItem.make_statuses.keys, {} %>
 			    <%= f.submit '更新' %>
           </td>
           <% end %>
