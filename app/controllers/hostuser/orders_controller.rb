@@ -2,8 +2,8 @@ class Hostuser::OrdersController < Hostuser::Base
 
   def index
     @endusers = Enduser.all
-    @orders = Order.all
-    # @order_items = Order_item.all
+    @enduser = current_enduser_enduser
+    @orders = Order.page(params[:page]).reverse_order
   end
 
   def show
