@@ -11,4 +11,8 @@ class Order < ApplicationRecord
 
   # validates :method_pay, presence: true
   
+  validates :method_pay, presence: true
+  
+
+  
 end
