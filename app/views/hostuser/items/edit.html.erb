@@ -2,7 +2,7 @@
   <h2>商品編集</h2>
 
    <%= form_with model: @item, url: hostuser_item_path, method: :patch, local: true do |f| %>
-   
+
     <!--エラー文-->
     <% if @item.errors.any? %>
      <div class=“error_explanation”>
@@ -15,11 +15,11 @@
       </div>
     <% end %>
     <!--エラー文終わり-->
-    
+
   　<div class="col-xs-4">
       <div class="field">
-        <%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "no_image.jpg", size: "300x200" %><br>
-        <%= f.attachment_field :image, class: "item_image" %>
+        <%= attachment_image_tag @item, :image, fallback: 'no_image.jpg', onChange: "$('.img_field').()", class: 'center-block img_prev'%>
+        <%= f.attachment_field :image, class: 'img_field' %>
       </div>
  　  </div>
     <div class="col-xs-4">
@@ -43,7 +43,7 @@
         <%= f.label :販売ステータス %>
         <%= f.select :sales_status, Item.sales_statuses .keys, {} , class: "sales_status btn btn-warning dropdown-toggle" %>
       </div>
-    </div>  
+    </div>
     <div class="col-xs-4">
       <div class="actions">
         <%= f.submit "変更を保存", class: "btn btn-primary" %>
