@@ -2,10 +2,17 @@ class Enduser::CartItemsController < Enduser::Base
 
   def index
     @cart_items = CartItem.all
+    
     @total_price = 0
     @cart_items.each do |cart_item|
      @total_price += cart_item.sub_total_price
     end
+    
+    @cart_item_count = 0
+    @cart_items.each do |cart_item|
+     @cart_item_count += cart_item.quantity
+    end
+    
   end
 
   def create

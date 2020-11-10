@@ -17,7 +17,7 @@
           </li>
           <li>
             <%= link_to "cart",enduser_cart_items_path, class: "header_btn glyphicon glyphicon-shopping-cart" %>
-            カート(<%#= current_enduser_enduser.cart_item.count %>個)
+            カート(<%= current_enduser_enduser.cart_items.count %>個)
             <!--<#% end %>-->
           </li>
           <li>
