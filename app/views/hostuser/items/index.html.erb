@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <h1>商品一覧</h1>
+    <h1 class="fa fa-birthday-cake"> 商品一覧</h1>
     <p class="text-right">
       <%= link_to " 新商品を追加する", new_hostuser_item_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-plus-sign btn btn-primary"%>
     </p>
@@ -17,7 +17,10 @@
       <tbody>
         <% @items.each do |item| %>
           <tr>
-            <td><%= item.id %></td>
+            <td>
+              <%= item.id %>
+              <%= attachment_image_tag item, :image, :fill, 45, 30, fallback: "no_image.jpg", size: "45x30" %>
+            </td>
             <td><%= link_to item.name, hostuser_item_path(item) %></td>
             <td><%= item.price_before_tax.to_s(:delimited) %></td>
             <td><%= item.genre.name %></td>
