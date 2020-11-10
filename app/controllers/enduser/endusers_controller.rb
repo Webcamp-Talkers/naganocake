@@ -1,5 +1,6 @@
 class Enduser::EndusersController < Enduser::Base
   before_action :current_enduser_aaa, only: [:show, :edit, :update, :leaving, :leaving_out]
+  before_action :authenticate_enduser_enduser!, only: [:show, :edit, :update, :leaving, :leaving_out]
   def show
   end
 
