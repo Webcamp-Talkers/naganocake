@@ -1,30 +1,28 @@
 <div class="row" style="width:70%; margin:0 auto;">
   <h2>注文履歴詳細</h2>
-
   <div class="flash">
-  <%= flash[:notice] %>
-</div>
+    <%= flash[:notice] %>
+  </div>
 
   <div class="row">
-    <%= link_to hostusers_path do %>
-    <h4><b>購入者</b><%= @order.name %></h4>
-    <% end %>
-    <div class="enduser_show">
-      <h4><b>配送先</b>  <%= @order.postal_code %><%= @order.address %><br>
-      <%= @order.name %></h4>
+    <div class "enduser_show">
+      <%= link_to hostusers_path do %>
+    <h4><b>購入者</b>  <%= @order.enduser.first_name %><%= @order.enduser.last_name %></h4>
+      <% end %>
     </div>
     <div class="enduser_show">
-      <h4><b>支払方法</b><%= @order.method_pay %></h4>
+      <h4><b>配送先</b> <%= @order.postal_code %><%= @order.address %> <%= @order.name %></h4>
     </div>
     <div class="enduser_show">
+      <h4><b>支払方法</b> <%= @order.method_pay %></h4>
+    </div>
+    <div class="enduser_show">
+      <%= form_for(@order, url: hostuser_order_path, method: :patch) do |f| %>
       <h4><b>注文ステータス</b>
-        <%#= form_with model: @order, url: hostuser_order_path(@order), method: :path, local: true do |f| %>
-        <%= form_for(@order, url: hostuser_order_path, method: :patch) do |f| %>
         <%= f.select :order_status, Order.order_statuses .keys, {} %>
         <%= f.submit "更新" %>
         <% end %>
       </h4>
-
     <table class="table">
       <thead>
        <tr>
@@ -42,7 +40,6 @@
           <td>¥<%= (order_item.item.price_before_tax*1.1).floor %>円<br></td>
           <td><%= order_item.quantity %> 個</td>
           <td>¥<%= (order_item.item.price_before_tax*1.1).floor*order_item.quantity %> 円</td>
-
           <%= form_for(order_item, url: hostuser_order_item_path(order_item), method: :patch) do |f| %>
           <td>
           <%= f.select :make_status, OrderItem.make_statuses.keys, {} %>
@@ -51,8 +48,7 @@
           <% end %>
         </tr>
         <% end %>
-      </tbody>
-      <table class="table table-bordered">
+              <table class="table table-bordered">
       <thead>
         <tr>
           <th>商品合計</th>
@@ -62,6 +58,11 @@
           <th>請求額</th>
           <td><%= @order.price_include_tax %> 円</td>
         </tr>
+      </thead>
+      </tbody>
+
+    <table class="table table-bordered">
+      <thead>
       </thead>
   </div>
 </div>
