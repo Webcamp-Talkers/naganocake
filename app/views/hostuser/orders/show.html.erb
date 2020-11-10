@@ -1,5 +1,10 @@
 <div class="row" style="width:70%; margin:0 auto;">
   <h2>注文履歴詳細</h2>
+
+  <div class="flash">
+  <%= flash[:notice] %>
+</div>
+
   <div class="row">
     <%= link_to hostusers_path do %>
     <h4><b>購入者</b><%= @order.name %></h4>
@@ -37,17 +42,16 @@
           <td>¥<%= (order_item.item.price_before_tax*1.1).floor %>円<br></td>
           <td><%= order_item.quantity %> 個</td>
           <td>¥<%= (order_item.item.price_before_tax*1.1).floor*order_item.quantity %> 円</td>
-        <% end %>
-          <%#= form_with model: @item, url: hostuser_items_path, local: true do |f| %>
-          <%#= form_for(@order_item, url: hostuser_order_item_path(@order_item), method: :patch) do |f| %>
-          <td>
-          <%#= f.select :produciton_status, OrderItems.produciton_statuses.keys, class: "order_status" %>
-			    <%#= f.submit '更新'  ,class: "btn btn-warning" %>
-          </td>
-          <!--<#% end %>-->
-        </tr>
-      </tbody>
 
+          <%= form_for(order_item, url: hostuser_order_item_path(order_item), method: :patch) do |f| %>
+          <td>
+          <%= f.select :make_status, OrderItem.make_statuses.keys, {} %>
+			    <%= f.submit '更新' %>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
       <table class="table table-bordered">
       <thead>
         <tr>
@@ -59,7 +63,5 @@
           <td><%= @order.price_include_tax %> 円</td>
         </tr>
       </thead>
-
-      <tab>
   </div>
 </div>
