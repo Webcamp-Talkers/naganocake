@@ -18,9 +18,9 @@
                 <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20, fallback: "no_image.jpg", size: "30x20" %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= cart_item.with_tax_price*1.1.round %>円</td>
+              <td><%= (cart_item.with_tax_price).round.to_s(:delimited) %>円</td>
               <td><%= cart_item.quantity %></td>
-              <td><%= cart_item.sub_total_price*1.1.round %>円</td>
+              <td><%= (cart_item.sub_total_price).round.to_s(:delimited) %>円</td>
             </tr>
           <% end %>
         </tbody>
@@ -34,11 +34,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td>合計金額(税込)  <%= @total_price %> 円</td>
+          <td>合計金額(税込)  <%= @total_price.to_s(:delimited) %> 円</td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td>合計金額(税込)  <%= @total_price + 800 %>円</td>
+          <td>合計金額(税込)  <%= (@total_price + 800).to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>
