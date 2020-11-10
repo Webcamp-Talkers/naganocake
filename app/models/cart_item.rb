@@ -13,6 +13,7 @@ class CartItem < ApplicationRecord
     (self.quantity) * (self.item.price_before_tax*1.1).floor 
   end
   
+  
   # def total_price
   
   # array = [] #空の配列を用意し、

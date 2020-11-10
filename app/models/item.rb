@@ -6,9 +6,6 @@ class Item < ApplicationRecord
  belongs_to :genre
  has_many :cart_items
  
- def sale
-  self.sales_status == "販売中"
- end
 
   # def toggle_status!
   #  if not_sale?
