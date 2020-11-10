@@ -6,12 +6,12 @@ class Item < ApplicationRecord
  belongs_to :genre
  has_many :cart_items
 
-  def toggle_status!
-   if not_sale?
-     on_sale!
-   else
-     not_sale!
-   end
-  end
+  # def toggle_status!
+  #  if not_sale?
+  #    on_sale!
+  #  else
+  #    not_sale!
+  #  end
+  # end
 
 end
