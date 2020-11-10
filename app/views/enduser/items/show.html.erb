@@ -17,7 +17,7 @@
       </div>
       <div class="item price_before_tax">
         <label>税込価格</label>
-        ¥<%= (@item.price_before_tax*1.1).floor %> (税込)<br>
+        ¥<%= (@item.price_before_tax*1.1).floor.to_s(:delimited) %> (税込)<br>
       </div>
     </div>
     <div class="col-xs-4">
