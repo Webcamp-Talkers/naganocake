@@ -18,7 +18,7 @@
                 <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20, fallback: "no_image.jpg", size: "30x20" %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= cart_item.with_tax_price*1.1.round %>円</td>
+              <td><%= cart_item.with_tax_price.round %>円</td>
               <td><%= cart_item.quantity %></td>
               <td><%= cart_item.sub_total_price*1.1.round %>円</td>
             </tr>
