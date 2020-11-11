@@ -9,6 +9,8 @@ class Enduser::OrdersController < Enduser::Base
     @order = Order.new(order_params)
     @order.save
     @enduser = current_enduser_enduser
+    Shipping.create(enduser_id: @enduser.id, postal_code: @order.postal_code, address: @order.address, name: @order.name)
+    @enduser = current_enduser_enduser
     @carts = CartItem.all
     @carts.each do |cart_item|
       @order_item = @order.order_items.new
@@ -42,8 +44,18 @@ class Enduser::OrdersController < Enduser::Base
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    # elsif params[:order][:order] == '2'
+    #   @address = Shipping.new
+    #   @address.postal_code = params[:order][:postal_code]
+    #   @address.address = params[:order][:address]
+    #   @address.name = params[:order][:name]
+    #   @address.save
+
+    #   @order.postal_code = @address.postal_code
+    #   @order.address = @address.address
+    #   @order.name = @address.name
     end
-    #render :confirm
+
   end
 
   def thanks
