@@ -14,8 +14,8 @@ class Order < ApplicationRecord
   validates :method_pay, presence: true
 
   after_update do
-    if self.order_status == "入金確認"  #selfはクラスメゾット
-      self.order_items.each {|order_item|
+    if order_status == "入金確認"  #selfはクラスメゾット
+      order_items.each {|order_item|
       order_item.update(make_status: "製作待ち")
       }
     end
