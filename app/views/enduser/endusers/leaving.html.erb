@@ -6,8 +6,16 @@
          これまでの購入履歴が閲覧できなくなります。<br>
          退会する場合は、「退会する」をクリックしてください。
       </p>
-      <%= link_to "退会しない", endusers_path, class:"col-sm-2 btn btn-primary center-block"%>
-      <%= link_to "退会する", endusers_leaving_out_path, data: { confirm: "本当に退会しますか？" }, method: :patch, class:"col-sm-2 btn btn-danger center-block"%>
    </div>
    <div class="col-xs-2"></div>
+   <div class="col-xs-12"><br>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+         <%= link_to "退会しない", endusers_path, class:"col-sm-5 btn btn-primary"%>
+         <div class="col-sm-2"></div>
+         <%= link_to "退会する", endusers_leaving_out_path, data: { confirm: "本当に退会しますか？" }, method: :patch, class:"col-sm-5 btn btn-danger"%>
+      </div>
+      <div class="col-xs-4"></div>
+      
+   </div>
 </div>
