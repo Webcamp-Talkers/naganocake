@@ -1,2 +1,21 @@
-<h1>Endusers#leaving</h1>
-<p>Find me in app/views/endusers/leaving.html.erb</p>
+<div class="row">
+   <div class="col-xs-2"></div>
+   <div class="col-xs-8 text-center">
+      <h2>本当に退会しますか？</h2>
+      <p>退会すると、会員登録情報や<br>
+         これまでの購入履歴が閲覧できなくなります。<br>
+         退会する場合は、「退会する」をクリックしてください。
+      </p>
+   </div>
+   <div class="col-xs-2"></div>
+   <div class="col-xs-12"><br>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+         <%= link_to "退会しない", endusers_path, class:"col-sm-5 btn btn-primary"%>
+         <div class="col-sm-2"></div>
+         <%= link_to "退会する", endusers_leaving_out_path, data: { confirm: "本当に退会しますか？" }, method: :patch, class:"col-sm-5 btn btn-danger"%>
+      </div>
+      <div class="col-xs-4"></div>
+      
+   </div>
+</div>

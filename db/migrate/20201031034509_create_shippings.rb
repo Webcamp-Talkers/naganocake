@@ -2,10 +2,10 @@ class CreateShippings < ActiveRecord::Migration[5.2]
   def change
     create_table :shippings do |t|
 
-      t.integer :enduser_id, null: false
-      t.string :postal_code, null: false
-      t.string :address, null: false
-      t.string :name, null: false
+      t.integer :enduser_id
+      t.string :postal_code
+      t.string :address
+      t.string :name
       t.timestamps
     end
   end

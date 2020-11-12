@@ -1,2 +1,34 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="fa fa-birthday-cake"> 商品一覧</h1>
+    <p class="text-right">
+      <%= link_to " 新商品を追加する", new_hostuser_item_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-plus-sign btn btn-primary"%>
+    </p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+    			<th>商品ID</th>
+    			<th>商品名</th>
+    			<th>税抜価格</th>
+    			<th>ジャンル</th>
+    			<th>ステータス</th>
+		    </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td>
+              <%= item.id %>
+              <%= attachment_image_tag item, :image, :fill, 45, 30, fallback: "no_image.jpg", size: "45x30" %>
+            </td>
+            <td><%= link_to item.name, hostuser_item_path(item) %></td>
+            <td><%= item.price_before_tax.to_s(:delimited) %></td>
+            <td><%= item.genre.name %></td>
+            <td><%= item.sales_status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @items %>
+  </div>
+</div>

@@ -1,2 +1,43 @@
-<h1>Hostusers#edit</h1>
-<p>Find me in app/views/hostusers/edit.html.erb</p>
+<div class="row" style="margin: 0 auto;">
+  <h2><%= @enduser.first_name %><%= @enduser.last_name %>さんの会員情報編集</h2>
+  <div class="row">
+    <%= form_with model:@enduser, url: hostuser_path, method: :patch, local: true do |f| %>
+      <label>顧客ID</label>
+      <%= @enduser.id %>
+      <div class="form-group">
+        <label>氏名</label>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      </div>
+      <div class="form-group">
+        <label>フリガナ</label>
+        <%= f.text_field :first_furigana, autofocus: true, autocomplete: "first_furigana" %>
+        <%= f.text_field :last_furigana, autofocus: true, autocomplete: "last_furigana" %>
+      </div>
+      <div class="form-group">
+        <label>郵便番号</label>
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+      </div>
+      <div class="form-group">
+        <label>住所</label>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+      </div>
+      <div class="form-group">
+        <label>電話番号</label>
+        <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "last_name" %>
+      </div>
+      <div class="form-group">
+        <label>メールアドレス</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="form-group">
+        <label>会員ステータス</label>
+        <%= f.radio_button :costomer_status, :true %>
+        <label>有効にする</label>
+        <%= f.radio_button :costomer_status, :false %>
+        <label>退会済み</label>
+      </div>
+      <%= f.submit "変更を保存する", class: 'btn btn-success center-block' %>
+    <% end %>
+  </div>
+</div>

@@ -65,8 +65,14 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 
+gem 'jquery-turbolinks'
+
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'jp_prefecture'
 
 gem 'kaminari','~> 1.2.1'
+
+gem 'whenever', require: false
+
+

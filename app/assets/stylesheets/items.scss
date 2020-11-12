@@ -1,3 +1,42 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+ padding: 50px 0;
+}
+.item {
+ margin: 7px;
+}
+
+.col-xs-2 {
+ margin-top: 90px;
+}
+
+.glyphicon-plus-sign {
+ font-size: 30px;
+}
+
+.img_prev:hover {
+  cursor: pointer; 
+  opacity: 0.7;
+  // transform: scale(1.1, 1.1);
+}
+.img_prev {
+  height: 200px;
+  width: 300px;
+}
+.img_field {
+  height: 200px;
+  width: 300px;
+}
+
+.item_img a {
+ display: block;
+ height: 115px;
+ margin: 0;
+ padding: 0;
+}
+.item_img a:hover {
+ text-decoration: none;
+ transform: scale(1.05, 1.05);
+}

@@ -1,2 +1,34 @@
-<h1>Hostusers#show</h1>
-<p>Find me in app/views/hostusers/show.html.erb</p>
+<div class="row" style="width:70%; margin:0 auto;">
+  <h2><%= @enduser.first_name %><%= @enduser.last_name %>の会員詳細</h2>
+  <div class="row">
+    <h4>顧客ID  <%= @enduser.id %>
+      <% if @enduser.costomer_status == true %>
+        有効会員
+      <% else %>
+        退会済み
+      <% end %>
+    </h4>
+    <div class="enduser_show">
+      <h4><b>氏名 </b> <%= @enduser.first_name %><%= @enduser.last_name %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4><b>フリガナ </b></h4>  <%= @enduser.first_furigana %><%= @enduser.last_furigana %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4><b>郵便番号 </b> 〒 <%= @enduser.postal_code %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4><b>住所 </b> <%= @enduser.address %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4><b>電話番号 </b> <%= @enduser.phone_number %></h4>
+    </div>
+    <div class="enduser_show">
+      <h4><b>メールアドレス </b> <%= @enduser.email %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to "編集する", edit_hostuser_path, class: 'btn btn-success' %>
+    <%= link_to "注文履歴一覧を見る", hostuser_path, class: 'btn btn-info' %>
+  </div>
+</div>
