@@ -74,3 +74,5 @@ gem 'jp_prefecture'
 gem 'kaminari','~> 1.2.1'
 
 gem 'whenever', require: false
+
+
