@@ -41,9 +41,10 @@ class Hostuser::ItemsController < Hostuser::Base
     end
   end
 
-   private
+  private
   def item_params
     params.require(:item).permit(:name, :price_before_tax, :image, :details, :sales_status,:genre_id)
   end
+
 
 end
