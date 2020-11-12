@@ -1,34 +1,44 @@
 <div class="row" style="width:70%; margin:0 auto;">
   <h2><%= @enduser.first_name %><%= @enduser.last_name %>の会員詳細</h2>
   <div class="row">
-    <h4>顧客ID  <%= @enduser.id %>
-      <% if @enduser.costomer_status == true %>
-        有効会員
-      <% else %>
-        退会済み
-      <% end %>
-    </h4>
-    <div class="enduser_show">
-      <h4>氏名  <%= @enduser.first_name %><%= @enduser.last_name %></h4>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">顧客ID</h4>
+      <h4 class="col-sm-4">
+        <%= @enduser.id %>
+        <% if @enduser.costomer_status == true %>
+          <span class="label label-primary">有効会員</span>
+        <% else %>
+          <span class="label label-danger">退会済み</span>
+        <% end %>
+      </h4>
     </div>
-    <div class="enduser_show">
-      <h4>フリガナ</h4>  <%= @enduser.first_furigana %><%= @enduser.last_furigana %></h4>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">氏名</h4>
+      <h4 class="col-sm-4"><%= @enduser.first_name %><%= @enduser.last_name %></h4>
     </div>
-    <div class="enduser_show">
-      <h4>郵便番号  <%= @enduser.postal_code %></h4>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">フリガナ</h4>
+      <h4 class="col-sm-4"><%= @enduser.first_furigana %><%= @enduser.last_furigana %></h4>
     </div>
-    <div class="enduser_show">
-      <h4>住所  <%= @enduser.address %></h4>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">郵便番号</h4>
+      <h4 class="col-sm-4"><%= @enduser.postal_code %></h4>
     </div>
-    <div class="enduser_show">
-      <h4>電話番号  <%= @enduser.phone_number %></h4>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">住所</h4>
+      <h4 class="col-sm-8"><%= @enduser.address %></h4>
     </div>
-    <div class="enduser_show">
-      <h4>メールアドレス  <%= @enduser.email %></h4>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">電話番号</h4>
+      <h4 class="col-sm-4"><%= @enduser.phone_number %></h4>
     </div>
-  </div>
-  <div class="row">
-    <%= link_to "編集する", edit_hostuser_path, class: 'btn btn-success' %>  
-    <%= link_to "注文履歴一覧を見る", hostuser_path, class: 'btn btn-info' %>
+    <div class="col-xs-12 enduser_show">
+      <h4 class="col-sm-3">メールアドレス</h4>
+      <h4 class="col-sm-8"><%= @enduser.email %></h4>
+    </div>
+    <div class="col-xs-12">
+      <div class="col-sm-2"><%= link_to "編集する", edit_hostuser_path, class: 'btn btn-success' %></div>
+      <div class="col-sm-3"><%= link_to "注文履歴一覧を見る", hostuser_orders_path, class: 'btn btn-info' %></div>
+    </div>
   </div>
 </div>
