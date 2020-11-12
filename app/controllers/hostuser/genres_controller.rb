@@ -7,11 +7,12 @@ class Hostuser::GenresController < Hostuser::Base
 
   def create
     @genre = Genre.new(genre_params)
-    if @genre.save!
+    if @genre.save
       flash[:notice] = "ジャンルを追加しました"
       redirect_to hostuser_genres_path
     else
       @genres = Genre.all.page(params[:page]).per(10)
+      flash.now[:alert] = '入力に不備があります'
       render :index
     end
   end
