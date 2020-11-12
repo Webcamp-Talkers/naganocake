@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
       enduser_items_path
     end
   end
-  
+
+  def after_sign_out_path_for(resource)
+    new_hostuser_hostuser_session_path
+  end
+
 
   private
 
