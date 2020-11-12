@@ -1,5 +1,6 @@
 class Enduser::EndusersController < Enduser::Base
   before_action :current_enduser_aaa, only: [:show, :edit, :update, :leaving, :leaving_out]
+  before_action :authenticate_enduser_enduser!, only: [:show, :edit, :update, :leaving, :leaving_out]
   def show
   end
 
@@ -19,8 +20,6 @@ class Enduser::EndusersController < Enduser::Base
   end
 
   def leaving_out
-    # @endusers.costomer_status = false
-    # @endusers.save
     @enduser.update(costomer_status: false)
     reset_session
     redirect_to root_path
@@ -31,9 +30,6 @@ class Enduser::EndusersController < Enduser::Base
     params.require(:enduser).permit(:first_name, :last_name, :first_furigana, :last_furigana, :email, :phone_number, :postal_code, :address, :costomer_status)
   end
 
-  # def current_enduser_aaa
-  #   @endusers = current_enduser_enduser
-  # end
 
   def current_enduser_aaa
     @enduser = Enduser.find(current_enduser_enduser.id)
