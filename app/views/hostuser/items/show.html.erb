@@ -1,5 +1,5 @@
 <div class="row">
-  
+
   <h2 class="fa fa-birthday-cake">商品詳細</h2><br>
   　<div class="col-xs-4">
   　   <label>商品画像</label>
@@ -26,9 +26,9 @@
         <label>販売ステータス</label>
         <%= @item.sales_status %>
       </div>
-    </div>  
+    </div>
     <div class="col-xs-4">
         <%= link_to '編集する', edit_hostuser_item_path(@item.id), data: {"turbolinks" => false}, class: "btn btn-primary" %>
     </div>
-    
+
 </div>
