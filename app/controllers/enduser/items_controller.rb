@@ -1,4 +1,5 @@
 class Enduser::ItemsController < Enduser::Base
+  before_action :authenticate_enduser_enduser!
 
   def index
     @items = Item.all
@@ -11,5 +12,6 @@ class Enduser::ItemsController < Enduser::Base
     @price_includ_tax = (@item.price_before_tax*1.1).floor
     @cart_item = CartItem.new
   end
+  
 
 end

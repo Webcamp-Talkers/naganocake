@@ -1,7 +1,9 @@
 class Enduser::CartItemsController < Enduser::Base
+    before_action :authenticate_enduser_enduser!
+    before_action :correct_user, only: [:update, :destroy]
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(enduser_id: current_enduser_enduser.id)
     
     @total_price = 0
     @cart_items.each do |cart_item|
@@ -35,7 +37,6 @@ class Enduser::CartItemsController < Enduser::Base
      @genres = Genre.all
      @item = Item.find_by(id: params[:id])
      render 'enduser/items/show'
-    # redirect_to enduser_cart_items_path
     end
 
   end
@@ -61,7 +62,7 @@ class Enduser::CartItemsController < Enduser::Base
   end
 
   def all_destroy
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(enduser_id: current_enduser_enduser.id)
     @cart_items.destroy_all
     flash[:notice] = "カートの中身を空にしました"
     redirect_back(fallback_location: enduser_cart_items_path)
@@ -70,6 +71,14 @@ class Enduser::CartItemsController < Enduser::Base
   private
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :item_id)
+  end
+  
+  def correct_user
+    @cart_item = CartItem.find_by(id: params[:id])
+    if current_enduser_enduser.id != @cart_item.enduser_id
+       flash[:notice] = "権限がありません"
+       redirect_to new_enduser_enduser_session_path
+    end
   end
 
 end
