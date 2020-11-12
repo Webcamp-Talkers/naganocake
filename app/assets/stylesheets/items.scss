@@ -29,3 +29,14 @@
   height: 200px;
   width: 300px;
 }
+
+.item_img a {
+ display: block;
+ height: 115px;
+ margin: 0;
+ padding: 0;
+}
+.item_img a:hover {
+ text-decoration: none;
+ transform: scale(1.05, 1.05);
+}
