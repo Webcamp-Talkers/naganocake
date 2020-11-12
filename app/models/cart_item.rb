@@ -1,5 +1,5 @@
 class CartItem < ApplicationRecord
-  validates :quantity, presence: true
+  validates :quantity, :enduser_id, :item_id, presence: true
   belongs_to :item
   belongs_to :enduser
   
