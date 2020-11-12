@@ -9,26 +9,26 @@
       <% end %>
     </h4>
     <div class="enduser_show">
-      <h4>氏名  <%= @enduser.first_name %><%= @enduser.last_name %></h4>
+      <h4><b>氏名 </b> <%= @enduser.first_name %><%= @enduser.last_name %></h4>
     </div>
     <div class="enduser_show">
-      <h4>フリガナ</h4>  <%= @enduser.first_furigana %><%= @enduser.last_furigana %></h4>
+      <h4><b>フリガナ </b></h4>  <%= @enduser.first_furigana %><%= @enduser.last_furigana %></h4>
     </div>
     <div class="enduser_show">
-      <h4>郵便番号  <%= @enduser.postal_code %></h4>
+      <h4><b>郵便番号 </b> 〒 <%= @enduser.postal_code %></h4>
     </div>
     <div class="enduser_show">
-      <h4>住所  <%= @enduser.address %></h4>
+      <h4><b>住所 </b> <%= @enduser.address %></h4>
     </div>
     <div class="enduser_show">
-      <h4>電話番号  <%= @enduser.phone_number %></h4>
+      <h4><b>電話番号 </b> <%= @enduser.phone_number %></h4>
     </div>
     <div class="enduser_show">
-      <h4>メールアドレス  <%= @enduser.email %></h4>
+      <h4><b>メールアドレス </b> <%= @enduser.email %></h4>
     </div>
   </div>
   <div class="row">
-    <%= link_to "編集する", edit_hostuser_path, class: 'btn btn-success' %>  
+    <%= link_to "編集する", edit_hostuser_path, class: 'btn btn-success' %>
     <%= link_to "注文履歴一覧を見る", hostuser_path, class: 'btn btn-info' %>
   </div>
 </div>
