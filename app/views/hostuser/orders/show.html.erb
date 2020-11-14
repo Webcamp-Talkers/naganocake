@@ -2,24 +2,33 @@
   <h2>注文履歴詳細</h2>
 
   <div class="row">
-    <div class "enduser_show">
-      <%= link_to hostusers_path do %>
-    <h4><b>購入者</b>  <%= @order.enduser.first_name %><%= @order.enduser.last_name %></h4>
-      <% end %>
-    </div>
-    <div class="enduser_show">
-      <h4><b>配送先</b> <%= @order.postal_code %><%= @order.address %> <%= @order.name %></h4>
-    </div>
-    <div class="enduser_show">
-      <h4><b>支払方法</b> <%= @order.method_pay %></h4>
-    </div>
-    <div class="enduser_show">
-      <%= form_for(@order, url: hostuser_order_path, method: :patch) do |f| %>
-      <h4><b>注文ステータス</b>
-        <%= f.select :order_status, Order.order_statuses .keys, {} %>
-        <%= f.submit "更新" %>
-      <% end %>
-      </h4>
+    <div class "table">
+      <thead>
+        <tr>
+          <th>
+            <%= link_to hostusers_path do %>
+            <b>購入者</b>  <%= @order.enduser.first_name %><%= @order.enduser.last_name %>
+
+            <% end %>
+          </th>
+          <br>
+          <th>
+          <b>配送先</b> <%= @order.postal_code %> <%= @order.address %> <%= @order.name %>
+          </th>
+          <br>
+          <th>
+          <b>支払方法</b> <%= @order.method_pay %>
+          </th>
+          <br>
+          <th>
+           <%= form_for(@order, url: hostuser_order_path, method: :patch) do |f| %>
+           <b>注文ステータス</b> <%= f.select :order_status, Order.order_statuses .keys, {} %><%= f.submit "更新" %>
+           <% end %>
+          <th>
+      </tr>
+     </thead>
+     </table>
+
     <table class="table">
       <thead>
        <tr>
