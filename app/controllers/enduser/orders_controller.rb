@@ -38,7 +38,7 @@ class Enduser::OrdersController < Enduser::Base
     if params[:order][:order] == '0'
       @order.postal_code = @enduser.postal_code
       @order.address = @enduser.address
-      @order.name = @enduser.first_name
+      @order.name = @enduser.first_name + @enduser.last_name
     elsif params[:order][:order] == '1'
       @address = Shipping.find(params[:order][:id])
       @order.postal_code = @address.postal_code

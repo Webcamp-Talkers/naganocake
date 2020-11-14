@@ -10,7 +10,7 @@ class Hostuser::OrderItemsController < Hostuser::Base
     elsif @order_item.make_status == "製作完了"
       complete_status = @order_items.pluck(:make_status).grep("製作完了")
       if complete_status.size == @order_items.count
-        @order_item.order.update(order_status: "発送準備中")
+        @order_item.order.update(order_status: "発送待ち")
       end
     end
     if @order_item.update(order_item_params)
