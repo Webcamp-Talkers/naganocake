@@ -9,9 +9,7 @@
 
 
  ##アプリケーション詳細設計図
- ![アプリケーション詳細設計図].(https://docs.google.com/spreadsheets/d/11AvBd6IbtY6lXfEG_GbwYsXboDELd0koVEVXohUQX88/edit?userstoinvite=kapibara.bba0924%40gmail.com&ts=5f97c9a4#gid=771301282)
-[チーム開発1 - アプリケーション詳細設計.pdf](https://github.com/Webcamp-Talkers/naganocake/files/5540109/1.-.pdf)
- ##機能
+ ![チーム開発1 - アプリケーション詳細設計.zip](https://github.com/Webcamp-Talkers/naganocake/files/5540123/1.-.zip)
  - enduser
   - 会員登録・編集・退会
   - 商品の閲覧・カートに入れる・注文
