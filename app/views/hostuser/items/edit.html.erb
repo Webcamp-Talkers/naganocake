@@ -22,31 +22,29 @@
         <%= f.attachment_field :image, class: 'img_field' %>
       </div>
  　  </div>
-    <div class="col-xs-4">
-      <div class="field">
-        <%= f.label :商品名 %>
-        <%= f.text_field :name, class: "name" %>
+    <div class="col-xs-7">
+      <div class="field col-xs-12 item">
+        <%= f.label :商品名, class:"col-sm-3" %>
+        <%= f.text_field :name, class: "col-sm-5 name" %>
       </div>
-      <div class="field">
-        <%= f.label :商品説明 %>
-        <%= f.text_field :details, class: "details" %>
+      <div class="field col-xs-12 item">
+        <%= f.label :商品説明, class:"col-sm-3" %>
+        <%= f.text_area :details, rows: 8, class: "col-sm-5 details" %>
       </div>
-      <div class="field">
-        <%= f.label :ジャンル %>
-        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --",) %>
+      <div class="field col-xs-12 item">
+        <%= f.label :ジャンル, class:"col-sm-3" %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "-- 選択してください --"}, {class: "col-sm-5"}) %>
       </div>
-      <div class="field">
-        <%= f.label :税抜価格 %>
-        <%= f.text_field :price_before_tax, class: "price_before_tax" %>円
+      <div class="field col-xs-12 item">
+        <%= f.label :税抜価格, class:"col-sm-3" %>
+        <%= f.text_field :price_before_tax, class: "col-sm-5 price_before_tax" %>　円
       </div>
-      <div class="field">
-        <%= f.label :販売ステータス %>
-        <%= f.select :sales_status, Item.sales_statuses .keys, {} , class: "sales_status btn btn-warning dropdown-toggle" %>
+      <div class="field col-xs-12 item">
+        <%= f.label :販売ステータス, class:"col-sm-3" %>
+        <%= f.select :sales_status, Item.sales_statuses .keys, {} , class: "col-sm-5 sales_status btn btn-warning dropdown-toggle" %>
       </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="actions">
-        <%= f.submit "変更を保存", class: "btn btn-primary" %>
+      <div class="actions col-xs-12 text-right">
+          <%= f.submit "変更を保存", class: "btn btn-primary btn-lg active" %>
       </div>
     </div>
   <% end %>
