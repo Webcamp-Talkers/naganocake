@@ -5,14 +5,11 @@
 
 
 ##ER図
-![ER図].(https://drive.google.com/file/d/1_v4dMdEZ4L7Kn53NXSaTr7FdB8yx3Lt8/view?ts=5f97d8d8)
-
+![ケーキ屋さん-修正](https://user-images.githubusercontent.com/71374040/99138765-55a7f880-2676-11eb-9300-5db8a401313e.png)
 
  ##アプリケーション詳細設計図
  ![チーム開発1 - アプリケーション詳細設計-1](https://user-images.githubusercontent.com/71374040/99138583-f990a480-2674-11eb-8e75-9a1683c3e889.png)
 ![チーム開発1 - アプリケーション詳細設計-2](https://user-images.githubusercontent.com/71374040/99138586-fbf2fe80-2674-11eb-98dc-810235cfe2af.png)
-
-
 
  - enduser
   - 会員登録・編集・退会
