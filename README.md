@@ -10,8 +10,7 @@
 
  ##アプリケーション詳細設計図
  ![アプリケーション詳細設計図].(https://docs.google.com/spreadsheets/d/11AvBd6IbtY6lXfEG_GbwYsXboDELd0koVEVXohUQX88/edit?userstoinvite=kapibara.bba0924%40gmail.com&ts=5f97c9a4#gid=771301282)
-(file:///C:/Users/user/Downloads/%E3%83%81%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA1%20-%20%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88.pdf)
-
+[チーム開発1 - アプリケーション詳細設計.pdf](https://github.com/Webcamp-Talkers/naganocake/files/5540109/1.-.pdf)
  ##機能
  - enduser
   - 会員登録・編集・退会
