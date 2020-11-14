@@ -30,25 +30,31 @@
       <table class="table table-bordered">
         <tr>
           <th>送料</th>
-          <td>800</td>
+          <td class="text-right">800円</td>
         </tr>
         <tr>
           <th>商品合計</th>
-          <td>合計金額(税込)  <%= @total_price.to_s(:delimited) %> 円</td>
+          <td class="text-right"><%= @total_price.to_s(:delimited) %> 円</td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td>合計金額(税込)  <%= (@total_price + 800).to_s(:delimited) %>円</td>
+          <td class="text-right"><%= (@total_price + 800).to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>
   </div>
-  <h3>支払い方法</h3>
-  <%= @order.method_pay %>
-  <h3>お届け先</h3>
-  〒 <%= @order.postal_code %>
-  <%= @order.address %>
-  <%= @order.name %>
+  <div class="col-xs-12 confirm">
+    <h4 class="col-sm-2">支払い方法</h4>
+    <div class="col-sm-3 confirm-method_pay"><%= @order.method_pay %></div>
+  </div>
+  <div class="col-xs-12 confirm">
+    <h4 class="col-sm-2">お届け先</h4>
+    <div class="col-sm-8 confirm-address">
+      〒 <%= @order.postal_code %>
+      <%= @order.address %><br>
+      <%= @order.name %>
+    </div>
+  </div>
   <%= form_with model:@order, url: enduser_orders_path, method: :post, local: true do |f| %>
     <%= f.hidden_field :enduser_id, value: current_enduser_enduser.id %>
     <%= f.hidden_field :postal_code, value: @order.postal_code %>
@@ -59,7 +65,7 @@
     <%= f.hidden_field :price_include_tax, value: @price_include_tax %>
     <%= f.hidden_field :order_status, value: "入金待ち" %>
 
-    <%= f.submit "購入を確定する", class: 'btn btn-info' %>
+    <div class="col-xs-12 text-center"><%= f.submit "購入を確定する", class: 'btn btn-info' %></div>
   <% end %>
 
 </div>

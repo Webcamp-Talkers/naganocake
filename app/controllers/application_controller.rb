@@ -10,8 +10,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_out_path_for(resource)
-    new_hostuser_hostuser_session_path
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :hostuser_hostuser
+      new_hostuser_hostuser_session_path
+    else 
+      root_path
+    end
   end
 
 

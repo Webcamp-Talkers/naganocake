@@ -29,15 +29,15 @@
       <table class="table table-bordered">
         <tr>
           <th>商品合計</th>
-          <td><%= @delivery_fee.to_s(:delimited) %> 円</td>
+          <td class="text-right"><%= @delivery_fee.to_s(:delimited) %> 円</td>
         </tr>
         <tr>
           <th>配送料</th>
-          <td>800</td>
+          <td class="text-right">800円</td>
         </tr>
         <tr>
           <th><b>ご請求額</b></th>
-          <td><%= @order.price_include_tax.to_s(:delimited) %> 円</td>
+          <td class="text-right"><%= @order.price_include_tax.to_s(:delimited) %> 円</td>
         </tr>
       </table>
     </div>
