@@ -1,4 +1,5 @@
 class Enduser::OrdersController < Enduser::Base
+  before_action :authenticate_enduser_enduser!
   def new
     @order = Order.new
     @enduser = current_enduser_enduser

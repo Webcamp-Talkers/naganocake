@@ -1,5 +1,5 @@
 class Enduser::ItemsController < Enduser::Base
-  before_action :authenticate_enduser_enduser!
+  before_action :authenticate_enduser_enduser!, only: [:show]
 
   def index
     @items = Item.all

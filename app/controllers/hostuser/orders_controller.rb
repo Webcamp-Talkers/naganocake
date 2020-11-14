@@ -1,4 +1,5 @@
 class Hostuser::OrdersController < Hostuser::Base
+  before_action :authenticate_hostuser_hostuser!
 
   def index
     @endusers = Enduser.all

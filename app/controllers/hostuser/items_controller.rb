@@ -1,4 +1,5 @@
 class Hostuser::ItemsController < Hostuser::Base
+  before_action :authenticate_hostuser_hostuser!
   def index
     @items = Item.all.page(params[:page]).per(10)
   end
